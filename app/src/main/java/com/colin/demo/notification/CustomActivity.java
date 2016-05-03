@@ -22,19 +22,19 @@ import com.colin.demo.R;
 public class CustomActivity extends BaseActivity implements OnClickListener{
 	/** TAG */
 	private final static String TAG = "CustomActivity";
-	/** °´Å¥£ºÏÔÊ¾×Ô¶¨ÒåÍ¨Öª */
+	/** æŒ‰é’®ï¼šæ˜¾ç¤ºè‡ªå®šä¹‰é€šçŸ¥ */
 	private Button btn_show_custom;
-	/** °´Å¥£ºÏÔÊ¾×Ô¶¨Òå´ø°´Å¥µÄÍ¨Öª */
+	/** æŒ‰é’®ï¼šæ˜¾ç¤ºè‡ªå®šä¹‰å¸¦æŒ‰é’®çš„é€šçŸ¥ */
 	private Button btn_show_custom_button;
-	/** Notification µÄID */
+	/** Notification çš„ID */
 	int notifyId = 101;
-	/** NotificationCompat ¹¹ÔìÆ÷*/
+	/** NotificationCompat æ„é€ å™¨*/
 	NotificationCompat.Builder mBuilder;
-	/** ÊÇ·ñÔÚ²¥·Å*/
+	/** æ˜¯å¦åœ¨æ’­æ”¾*/
 	public boolean isPlay = false;
-	/** Í¨ÖªÀ¸°´Å¥¹ã²¥ */
+	/** é€šçŸ¥æ æŒ‰é’®å¹¿æ’­ */
 	public ButtonBroadcastReceiver bReceiver;
-	/** Í¨ÖªÀ¸°´Å¥µã»÷ÊÂ¼ş¶ÔÓ¦µÄACTION */
+	/** é€šçŸ¥æ æŒ‰é’®ç‚¹å‡»äº‹ä»¶å¯¹åº”çš„ACTION */
 	public final static String ACTION_BUTTON = "com.notifications.intent.action.ButtonClick";
 	
 	@Override
@@ -53,27 +53,27 @@ public class CustomActivity extends BaseActivity implements OnClickListener{
 	}
 
 	public void shwoNotify(){
-		//ÏÈÉè¶¨RemoteViews
+		//å…ˆè®¾å®šRemoteViews
 		RemoteViews view_custom = new RemoteViews(getPackageName(), R.layout.view_notify_custom);
-		//ÉèÖÃ¶ÔÓ¦IMAGEVIEWµÄIDµÄ×ÊÔ´Í¼Æ¬
+		//è®¾ç½®å¯¹åº”IMAGEVIEWçš„IDçš„èµ„æºå›¾ç‰‡
 		view_custom.setImageViewResource(R.id.custom_icon, R.drawable.icon);
 //		view_notify_custom.setInt(R.id.custom_icon,"setBackgroundResource",R.drawable.icon);
-		view_custom.setTextViewText(R.id.tv_custom_title, "½ñÈÕÍ·Ìõ");
-		view_custom.setTextViewText(R.id.tv_custom_content, "½ğÖİÓÂÊ¿¹Ù·½Ğû²¼Çò¶ÓÒÑ¾­½â¹ÍÁËÖ÷Ë§Âí¿Ë-½Ü¿ËÑ·£¬ËæºóĞû²¼ÁË×îºóµÄ½á¹û¡£");
+		view_custom.setTextViewText(R.id.tv_custom_title, "ä»Šæ—¥å¤´æ¡");
+		view_custom.setTextViewText(R.id.tv_custom_content, "é‡‘å·å‹‡å£«å®˜æ–¹å®£å¸ƒçƒé˜Ÿå·²ç»è§£é›‡äº†ä¸»å¸…é©¬å…‹-æ°å…‹é€Šï¼Œéšåå®£å¸ƒäº†æœ€åçš„ç»“æœã€‚");
 //		view_notify_custom.setTextViewText(R.id.tv_custom_time, String.valueOf(System.currentTimeMillis()));
-		//ÉèÖÃÏÔÊ¾
+		//è®¾ç½®æ˜¾ç¤º
 //		view_notify_custom.setViewVisibility(R.id.tv_custom_time, View.VISIBLE);
-//		view_notify_custom.setLong(R.id.tv_custom_time,"setTime", System.currentTimeMillis());//²»ÖªµÀÎªÉ¶»á±¨´í£¬¹ı»á¿´¿´ÈÕÖ¾
-		//ÉèÖÃnumber
+//		view_notify_custom.setLong(R.id.tv_custom_time,"setTime", System.currentTimeMillis());//ä¸çŸ¥é“ä¸ºå•¥ä¼šæŠ¥é”™ï¼Œè¿‡ä¼šçœ‹çœ‹æ—¥å¿—
+		//è®¾ç½®number
 //		NumberFormat num = NumberFormat.getIntegerInstance();
 //		view_notify_custom.setTextViewText(R.id.tv_custom_num, num.format(this.number));
 		mBuilder = new Builder(this);
 		mBuilder.setContent(view_custom)
 				.setContentIntent(getDefalutIntent(Notification.FLAG_AUTO_CANCEL))
-				.setWhen(System.currentTimeMillis())// Í¨Öª²úÉúµÄÊ±¼ä£¬»áÔÚÍ¨ÖªĞÅÏ¢ÀïÏÔÊ¾
-				.setTicker("ÓĞĞÂ×ÊÑ¶")
-				.setPriority(Notification.PRIORITY_DEFAULT)// ÉèÖÃ¸ÃÍ¨ÖªÓÅÏÈ¼¶
-				.setOngoing(false)//²»ÊÇÕıÔÚ½øĞĞµÄ   trueÎªÕıÔÚ½øĞĞ  Ğ§¹ûºÍ.flagÒ»Ñù
+				.setWhen(System.currentTimeMillis())// é€šçŸ¥äº§ç”Ÿçš„æ—¶é—´ï¼Œä¼šåœ¨é€šçŸ¥ä¿¡æ¯é‡Œæ˜¾ç¤º
+				.setTicker("æœ‰æ–°èµ„è®¯")
+				.setPriority(Notification.PRIORITY_DEFAULT)// è®¾ç½®è¯¥é€šçŸ¥ä¼˜å…ˆçº§
+				.setOngoing(false)//ä¸æ˜¯æ­£åœ¨è¿›è¡Œçš„   trueä¸ºæ­£åœ¨è¿›è¡Œ  æ•ˆæœå’Œ.flagä¸€æ ·
 				.setSmallIcon(R.drawable.icon);
 //		mNotificationManager.notify(notifyId, mBuilder.build());
 		Notification notify = mBuilder.build();
@@ -86,16 +86,16 @@ public class CustomActivity extends BaseActivity implements OnClickListener{
 	}
 	
 	/**
-	 * ´ø°´Å¥µÄÍ¨ÖªÀ¸
+	 * å¸¦æŒ‰é’®çš„é€šçŸ¥æ 
 	 */
 	public void showButtonNotify(){
 		NotificationCompat.Builder mBuilder = new Builder(this);
 		RemoteViews mRemoteViews = new RemoteViews(getPackageName(), R.layout.view_notify_custom_button);
 		mRemoteViews.setImageViewResource(R.id.custom_song_icon, R.drawable.sing_icon);
-		//API3.0 ÒÔÉÏµÄÊ±ºòÏÔÊ¾°´Å¥£¬·ñÔòÏûÊ§
-		mRemoteViews.setTextViewText(R.id.tv_custom_song_singer, "ÖÜ½ÜÂ×");
-		mRemoteViews.setTextViewText(R.id.tv_custom_song_name, "ÆßÀïÏã");
-		//Èç¹û°æ±¾ºÅµÍÓÚ£¨3¡£0£©£¬ÄÇÃ´²»ÏÔÊ¾°´Å¥
+		//API3.0 ä»¥ä¸Šçš„æ—¶å€™æ˜¾ç¤ºæŒ‰é’®ï¼Œå¦åˆ™æ¶ˆå¤±
+		mRemoteViews.setTextViewText(R.id.tv_custom_song_singer, "å‘¨æ°ä¼¦");
+		mRemoteViews.setTextViewText(R.id.tv_custom_song_name, "ä¸ƒé‡Œé¦™");
+		//å¦‚æœç‰ˆæœ¬å·ä½äºï¼ˆ3ã€‚0ï¼‰ï¼Œé‚£ä¹ˆä¸æ˜¾ç¤ºæŒ‰é’®
 		if(BaseTools.getSystemVersion() <= 9){
 			mRemoteViews.setViewVisibility(R.id.ll_custom_button, View.GONE);
 		}else{
@@ -108,32 +108,32 @@ public class CustomActivity extends BaseActivity implements OnClickListener{
 			}
 		}
 
-		//µã»÷µÄÊÂ¼ş´¦Àí
+		//ç‚¹å‡»çš„äº‹ä»¶å¤„ç†
 		Intent buttonIntent = new Intent(ACTION_BUTTON);
-		/* ÉÏÒ»Ê×°´Å¥ */
+		/* ä¸Šä¸€é¦–æŒ‰é’® */
 		buttonIntent.putExtra(INTENT_BUTTONID_TAG, BUTTON_PREV_ID);
-		//ÕâÀï¼ÓÁË¹ã²¥£¬Ëù¼°INTENTµÄ±ØĞëÓÃgetBroadcast·½·¨
+		//è¿™é‡ŒåŠ äº†å¹¿æ’­ï¼Œæ‰€åŠINTENTçš„å¿…é¡»ç”¨getBroadcastæ–¹æ³•
 		PendingIntent intent_prev = PendingIntent.getBroadcast(this, 1, buttonIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 		mRemoteViews.setOnClickPendingIntent(R.id.btn_custom_prev, intent_prev);
-		/* ²¥·Å/ÔİÍ£  °´Å¥ */
+		/* æ’­æ”¾/æš‚åœ  æŒ‰é’® */
 		buttonIntent.putExtra(INTENT_BUTTONID_TAG, BUTTON_PALY_ID);
 		PendingIntent intent_paly = PendingIntent.getBroadcast(this, 2, buttonIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 		mRemoteViews.setOnClickPendingIntent(R.id.btn_custom_play, intent_paly);
-		/* ÏÂÒ»Ê× °´Å¥  */
+		/* ä¸‹ä¸€é¦– æŒ‰é’®  */
 		buttonIntent.putExtra(INTENT_BUTTONID_TAG, BUTTON_NEXT_ID);
 		PendingIntent intent_next = PendingIntent.getBroadcast(this, 3, buttonIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 		mRemoteViews.setOnClickPendingIntent(R.id.btn_custom_next, intent_next);
 		
 		mBuilder.setContent(mRemoteViews)
 				.setContentIntent(getDefalutIntent(Notification.FLAG_ONGOING_EVENT))
-				.setWhen(System.currentTimeMillis())// Í¨Öª²úÉúµÄÊ±¼ä£¬»áÔÚÍ¨ÖªĞÅÏ¢ÀïÏÔÊ¾
-				.setTicker("ÕıÔÚ²¥·Å")
-				.setPriority(Notification.PRIORITY_DEFAULT)// ÉèÖÃ¸ÃÍ¨ÖªÓÅÏÈ¼¶
+				.setWhen(System.currentTimeMillis())// é€šçŸ¥äº§ç”Ÿçš„æ—¶é—´ï¼Œä¼šåœ¨é€šçŸ¥ä¿¡æ¯é‡Œæ˜¾ç¤º
+				.setTicker("æ­£åœ¨æ’­æ”¾")
+				.setPriority(Notification.PRIORITY_DEFAULT)// è®¾ç½®è¯¥é€šçŸ¥ä¼˜å…ˆçº§
 				.setOngoing(true)
 				.setSmallIcon(R.drawable.sing_icon);
 		Notification notify = mBuilder.build();
 		notify.flags = Notification.FLAG_ONGOING_EVENT;
-		//»á±¨´í£¬»¹ÔÚÕÒ½â¾öË¼Â·
+		//ä¼šæŠ¥é”™ï¼Œè¿˜åœ¨æ‰¾è§£å†³æ€è·¯
 //		notify.contentView = mRemoteViews;
 //		notify.contentIntent = PendingIntent.getActivity(this, 0, new Intent(), 0);
 		mNotificationManager.notify(200, notify);
@@ -153,7 +153,7 @@ public class CustomActivity extends BaseActivity implements OnClickListener{
 		}
 	}
 	
-	/** ´ø°´Å¥µÄÍ¨ÖªÀ¸µã»÷¹ã²¥½ÓÊÕ */
+	/** å¸¦æŒ‰é’®çš„é€šçŸ¥æ ç‚¹å‡»å¹¿æ’­æ¥æ”¶ */
 	public void initButtonReceiver(){
 		bReceiver = new ButtonBroadcastReceiver();
 		IntentFilter intentFilter = new IntentFilter();
@@ -162,14 +162,14 @@ public class CustomActivity extends BaseActivity implements OnClickListener{
 	}
 	
 	public final static String INTENT_BUTTONID_TAG = "ButtonId";
-	/** ÉÏÒ»Ê× °´Å¥µã»÷ ID */
+	/** ä¸Šä¸€é¦– æŒ‰é’®ç‚¹å‡» ID */
 	public final static int BUTTON_PREV_ID = 1;
-	/** ²¥·Å/ÔİÍ£ °´Å¥µã»÷ ID */
+	/** æ’­æ”¾/æš‚åœ æŒ‰é’®ç‚¹å‡» ID */
 	public final static int BUTTON_PALY_ID = 2;
-	/** ÏÂÒ»Ê× °´Å¥µã»÷ ID */
+	/** ä¸‹ä¸€é¦– æŒ‰é’®ç‚¹å‡» ID */
 	public final static int BUTTON_NEXT_ID = 3;
 	/**
-	 *	 ¹ã²¥¼àÌı°´Å¥µã»÷Ê±¼ä 
+	 *	 å¹¿æ’­ç›‘å¬æŒ‰é’®ç‚¹å‡»æ—¶é—´ 
 	 */
 	public class ButtonBroadcastReceiver extends BroadcastReceiver{
 
@@ -177,28 +177,28 @@ public class CustomActivity extends BaseActivity implements OnClickListener{
 		public void onReceive(Context context, Intent intent) {
 			String action = intent.getAction();
 			if(action.equals(ACTION_BUTTON)){
-				//Í¨¹ı´«µİ¹ıÀ´µÄIDÅĞ¶Ï°´Å¥µã»÷ÊôĞÔ»òÕßÍ¨¹ıgetResultCode()»ñµÃÏàÓ¦µã»÷ÊÂ¼ş
+				//é€šè¿‡ä¼ é€’è¿‡æ¥çš„IDåˆ¤æ–­æŒ‰é’®ç‚¹å‡»å±æ€§æˆ–è€…é€šè¿‡getResultCode()è·å¾—ç›¸åº”ç‚¹å‡»äº‹ä»¶
 				int buttonId = intent.getIntExtra(INTENT_BUTTONID_TAG, 0);
 				switch (buttonId) {
 				case BUTTON_PREV_ID:
-					Log.d(TAG , "ÉÏÒ»Ê×");
-					Toast.makeText(getApplicationContext(), "ÉÏÒ»Ê×", Toast.LENGTH_SHORT).show();
+					Log.d(TAG , "ä¸Šä¸€é¦–");
+					Toast.makeText(getApplicationContext(), "ä¸Šä¸€é¦–", Toast.LENGTH_SHORT).show();
 					break;
 				case BUTTON_PALY_ID:
 					String play_status = "";
 					isPlay = !isPlay;
 					if(isPlay){
-						play_status = "¿ªÊ¼²¥·Å";
+						play_status = "å¼€å§‹æ’­æ”¾";
 					}else{
-						play_status = "ÒÑÔİÍ£";
+						play_status = "å·²æš‚åœ";
 					}
 					showButtonNotify();
 					Log.d(TAG , play_status);
 					Toast.makeText(getApplicationContext(), play_status, Toast.LENGTH_SHORT).show();
 					break;
 				case BUTTON_NEXT_ID:
-					Log.d(TAG , "ÏÂÒ»Ê×");
-					Toast.makeText(getApplicationContext(), "ÏÂÒ»Ê×", Toast.LENGTH_SHORT).show();
+					Log.d(TAG , "ä¸‹ä¸€é¦–");
+					Toast.makeText(getApplicationContext(), "ä¸‹ä¸€é¦–", Toast.LENGTH_SHORT).show();
 					break;
 				default:
 					break;

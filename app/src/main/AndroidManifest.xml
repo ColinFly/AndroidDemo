@@ -4,20 +4,35 @@
     <!--手机震动-->
     <uses-permission android:name="android.permission.VIBRATE" />
     <application
+        android:name="com.colin.library.base.MyApplication"
         android:label="@string/app_name"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:theme="@style/AppTheme">
-        <!-- ==============通知栏练习开始==================-->
-        <activity android:name=".notification.MainActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!-- ==============通知栏练习开始==================-->
+        <activity android:name=".notification.MainActivity"/>
         <activity android:name=".notification.CustomActivity" />
-        <activity android:name=".notification.ProgressAcitivty" />
+        <activity android:name=".notification.ProgressActivity" />
         <!-- ==============通知栏练习结束==============-->
+
+        <!--===================Service与Activity通信开始==================-->
+        <activity android:name=".service.MainActivity" />
+        <!--这是通过bindService-->
+        <service android:name=".service.MsgService" />
+        <!--这是通过startService-->
+        <service android:name=".service.MsgService2"  >
+            <!--这个就是Service的Id了-->
+            <intent-filter>
+                <action android:name="com.colin.demo.service.Service2" />
+            </intent-filter>
+        </service>
+        <!--===================Service与Activity通信结束==================-->
     </application>
 </manifest>

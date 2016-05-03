@@ -17,7 +17,7 @@ import android.widget.Button;
 import com.colin.demo.R;
 
 /*
- * Í¨ÖªÀ¸Ó¦ÓÃ
+ * é€šçŸ¥æ åº”ç”¨
  */
 public class MainActivity extends BaseActivity implements OnClickListener{
 	private Button btn_show;
@@ -27,13 +27,13 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 	private Button btn_clear;
 	private Button btn_clear_all;
 	private Button btn_show_custom;
-	/** µã»÷Ìø×ªµ½Ö¸¶¨µÄ½çÃæ */
+	/** ç‚¹å‡»è·³è½¬åˆ°æŒ‡å®šçš„ç•Œé¢ */
 	private Button btn_show_intent_act;
-	/** µã»÷´ò¿ªÖ¸¶¨µÄ½çapk */
+	/** ç‚¹å‡»æ‰“å¼€æŒ‡å®šçš„ç•Œapk */
 	private Button btn_show_intent_apk;
-	/** Notification¹¹ÔìÆ÷ */
+	/** Notificationæ„é€ å™¨ */
 	NotificationCompat.Builder mBuilder;
-	/** NotificationµÄID */
+	/** Notificationçš„ID */
 	int notifyId = 100;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -64,90 +64,90 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 		btn_show_intent_apk.setOnClickListener(this);
 	}
 	
-	/** ³õÊ¼»¯Í¨ÖªÀ¸ */
+	/** åˆå§‹åŒ–é€šçŸ¥æ  */
 	private void initNotify(){
 		mBuilder = new NotificationCompat.Builder(this);
-		mBuilder.setContentTitle("²âÊÔ±êÌâ")
-				.setContentText("²âÊÔÄÚÈİ")
+		mBuilder.setContentTitle("æµ‹è¯•æ ‡é¢˜")
+				.setContentText("æµ‹è¯•å†…å®¹")
 				.setContentIntent(getDefalutIntent(Notification.FLAG_AUTO_CANCEL))
-//				.setNumber(number)//ÏÔÊ¾ÊıÁ¿
-				.setTicker("²âÊÔÍ¨ÖªÀ´À²")//Í¨ÖªÊ×´Î³öÏÖÔÚÍ¨ÖªÀ¸£¬´øÉÏÉı¶¯»­Ğ§¹ûµÄ
-				.setWhen(System.currentTimeMillis())//Í¨Öª²úÉúµÄÊ±¼ä£¬»áÔÚÍ¨ÖªĞÅÏ¢ÀïÏÔÊ¾
-				.setPriority(Notification.PRIORITY_DEFAULT)//ÉèÖÃ¸ÃÍ¨ÖªÓÅÏÈ¼¶
-//				.setAutoCancel(true)//ÉèÖÃÕâ¸ö±êÖ¾µ±ÓÃ»§µ¥»÷Ãæ°å¾Í¿ÉÒÔÈÃÍ¨Öª½«×Ô¶¯È¡Ïû  
-				.setOngoing(false)//ture£¬ÉèÖÃËûÎªÒ»¸öÕıÔÚ½øĞĞµÄÍ¨Öª¡£ËûÃÇÍ¨³£ÊÇÓÃÀ´±íÊ¾Ò»¸öºóÌ¨ÈÎÎñ,ÓÃ»§»ı¼«²ÎÓë(Èç²¥·ÅÒôÀÖ)»òÒÔÄ³ÖÖ·½Ê½ÕıÔÚµÈ´ı,Òò´ËÕ¼ÓÃÉè±¸(ÈçÒ»¸öÎÄ¼şÏÂÔØ,Í¬²½²Ù×÷,Ö÷¶¯ÍøÂçÁ¬½Ó)
-				.setDefaults(Notification.DEFAULT_VIBRATE)//ÏòÍ¨ÖªÌí¼ÓÉùÒô¡¢ÉÁµÆºÍÕñ¶¯Ğ§¹ûµÄ×î¼òµ¥¡¢×îÒ»ÖÂµÄ·½Ê½ÊÇÊ¹ÓÃµ±Ç°µÄÓÃ»§Ä¬ÈÏÉèÖÃ£¬Ê¹ÓÃdefaultsÊôĞÔ£¬¿ÉÒÔ×éºÏ£º
-				//Notification.DEFAULT_ALL  Notification.DEFAULT_SOUND Ìí¼ÓÉùÒô // requires VIBRATE permission
+//				.setNumber(number)//æ˜¾ç¤ºæ•°é‡
+				.setTicker("æµ‹è¯•é€šçŸ¥æ¥å•¦")//é€šçŸ¥é¦–æ¬¡å‡ºç°åœ¨é€šçŸ¥æ ï¼Œå¸¦ä¸Šå‡åŠ¨ç”»æ•ˆæœçš„
+				.setWhen(System.currentTimeMillis())//é€šçŸ¥äº§ç”Ÿçš„æ—¶é—´ï¼Œä¼šåœ¨é€šçŸ¥ä¿¡æ¯é‡Œæ˜¾ç¤º
+				.setPriority(Notification.PRIORITY_DEFAULT)//è®¾ç½®è¯¥é€šçŸ¥ä¼˜å…ˆçº§
+//				.setAutoCancel(true)//è®¾ç½®è¿™ä¸ªæ ‡å¿—å½“ç”¨æˆ·å•å‡»é¢æ¿å°±å¯ä»¥è®©é€šçŸ¥å°†è‡ªåŠ¨å–æ¶ˆ  
+				.setOngoing(false)//tureï¼Œè®¾ç½®ä»–ä¸ºä¸€ä¸ªæ­£åœ¨è¿›è¡Œçš„é€šçŸ¥ã€‚ä»–ä»¬é€šå¸¸æ˜¯ç”¨æ¥è¡¨ç¤ºä¸€ä¸ªåå°ä»»åŠ¡,ç”¨æˆ·ç§¯æå‚ä¸(å¦‚æ’­æ”¾éŸ³ä¹)æˆ–ä»¥æŸç§æ–¹å¼æ­£åœ¨ç­‰å¾…,å› æ­¤å ç”¨è®¾å¤‡(å¦‚ä¸€ä¸ªæ–‡ä»¶ä¸‹è½½,åŒæ­¥æ“ä½œ,ä¸»åŠ¨ç½‘ç»œè¿æ¥)
+				.setDefaults(Notification.DEFAULT_VIBRATE)//å‘é€šçŸ¥æ·»åŠ å£°éŸ³ã€é—ªç¯å’ŒæŒ¯åŠ¨æ•ˆæœçš„æœ€ç®€å•ã€æœ€ä¸€è‡´çš„æ–¹å¼æ˜¯ä½¿ç”¨å½“å‰çš„ç”¨æˆ·é»˜è®¤è®¾ç½®ï¼Œä½¿ç”¨defaultså±æ€§ï¼Œå¯ä»¥ç»„åˆï¼š
+				//Notification.DEFAULT_ALL  Notification.DEFAULT_SOUND æ·»åŠ å£°éŸ³ // requires VIBRATE permission
 				.setSmallIcon(R.drawable.ic_launcher);
 	}
 	
-	/** ÏÔÊ¾Í¨ÖªÀ¸ */
+	/** æ˜¾ç¤ºé€šçŸ¥æ  */
 	public void showNotify(){
-		mBuilder.setContentTitle("²âÊÔ±êÌâ")
-				.setContentText("²âÊÔÄÚÈİ")
-//				.setNumber(number)//ÏÔÊ¾ÊıÁ¿
-				.setTicker("²âÊÔÍ¨ÖªÀ´À²");//Í¨ÖªÊ×´Î³öÏÖÔÚÍ¨ÖªÀ¸£¬´øÉÏÉı¶¯»­Ğ§¹ûµÄ
+		mBuilder.setContentTitle("æµ‹è¯•æ ‡é¢˜")
+				.setContentText("æµ‹è¯•å†…å®¹")
+//				.setNumber(number)//æ˜¾ç¤ºæ•°é‡
+				.setTicker("æµ‹è¯•é€šçŸ¥æ¥å•¦");//é€šçŸ¥é¦–æ¬¡å‡ºç°åœ¨é€šçŸ¥æ ï¼Œå¸¦ä¸Šå‡åŠ¨ç”»æ•ˆæœçš„
 		mNotificationManager.notify(notifyId, mBuilder.build());
 //		mNotification.notify(getResources().getString(R.string.app_name), notiId, mBuilder.build());
 	}
 	
-	/** ÏÔÊ¾´óÊÓÍ¼·ç¸ñÍ¨ÖªÀ¸ */
+	/** æ˜¾ç¤ºå¤§è§†å›¾é£æ ¼é€šçŸ¥æ  */
 	public void showBigStyleNotify() {
 		NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
 		String[] events = new String[5];
 		// Sets a title for the Inbox style big view
-		inboxStyle.setBigContentTitle("´óÊÓÍ¼ÄÚÈİ:");
+		inboxStyle.setBigContentTitle("å¤§è§†å›¾å†…å®¹:");
 		// Moves events into the big view
 		for (int i=0; i < events.length; i++) {
 		    inboxStyle.addLine(events[i]);
 		}
-		mBuilder.setContentTitle("²âÊÔ±êÌâ")
-				.setContentText("²âÊÔÄÚÈİ")
-//				.setNumber(number)//ÏÔÊ¾ÊıÁ¿
-				.setStyle(inboxStyle)//ÉèÖÃ·ç¸ñ
-				.setTicker("²âÊÔÍ¨ÖªÀ´À²");// Í¨ÖªÊ×´Î³öÏÖÔÚÍ¨ÖªÀ¸£¬´øÉÏÉı¶¯»­Ğ§¹ûµÄ
+		mBuilder.setContentTitle("æµ‹è¯•æ ‡é¢˜")
+				.setContentText("æµ‹è¯•å†…å®¹")
+//				.setNumber(number)//æ˜¾ç¤ºæ•°é‡
+				.setStyle(inboxStyle)//è®¾ç½®é£æ ¼
+				.setTicker("æµ‹è¯•é€šçŸ¥æ¥å•¦");// é€šçŸ¥é¦–æ¬¡å‡ºç°åœ¨é€šçŸ¥æ ï¼Œå¸¦ä¸Šå‡åŠ¨ç”»æ•ˆæœçš„
 		mNotificationManager.notify(notifyId, mBuilder.build());
 		// mNotification.notify(getResources().getString(R.string.app_name),
 		// notiId, mBuilder.build());
 	}
 	
-	/** ÏÔÊ¾³£×¤Í¨ÖªÀ¸ */
+	/** æ˜¾ç¤ºå¸¸é©»é€šçŸ¥æ  */
 	public void showCzNotify(){
-//		Notification mNotification = new Notification();//ÎªÁË¼æÈİÎÊÌâ£¬²»ÓÃ¸Ã·½·¨£¬ËùÒÔ¶¼²ÉÓÃBUILD·½Ê½½¨Á¢
-//		Notification mNotification  = new Notification.Builder(this).getNotification();//ÕâÖÖ·½Ê½ÒÑ¾­¹ıÊ±
+//		Notification mNotification = new Notification();//ä¸ºäº†å…¼å®¹é—®é¢˜ï¼Œä¸ç”¨è¯¥æ–¹æ³•ï¼Œæ‰€ä»¥éƒ½é‡‡ç”¨BUILDæ–¹å¼å»ºç«‹
+//		Notification mNotification  = new Notification.Builder(this).getNotification();//è¿™ç§æ–¹å¼å·²ç»è¿‡æ—¶
 		NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this);
-//		//PendingIntent Ìø×ª¶¯×÷
+//		//PendingIntent è·³è½¬åŠ¨ä½œ
 		PendingIntent pendingIntent=PendingIntent.getActivity(this, 0, getIntent(), 0);  
 		mBuilder.setSmallIcon(R.drawable.ic_launcher)
-				.setTicker("³£×¤Í¨ÖªÀ´ÁË")
-				.setContentTitle("³£×¤²âÊÔ")
-				.setContentText("Ê¹ÓÃcancel()·½·¨²Å¿ÉÒÔ°ÑÎÒÈ¥µôÅ¶")
+				.setTicker("å¸¸é©»é€šçŸ¥æ¥äº†")
+				.setContentTitle("å¸¸é©»æµ‹è¯•")
+				.setContentText("ä½¿ç”¨cancel()æ–¹æ³•æ‰å¯ä»¥æŠŠæˆ‘å»æ‰å“¦")
 				.setContentIntent(pendingIntent);
 		Notification mNotification = mBuilder.build();
-		//ÉèÖÃÍ¨Öª  ÏûÏ¢  Í¼±ê  
+		//è®¾ç½®é€šçŸ¥  æ¶ˆæ¯  å›¾æ ‡  
 		mNotification.icon = R.drawable.ic_launcher;
-		//ÔÚÍ¨ÖªÀ¸ÉÏµã»÷´ËÍ¨Öªºó×Ô¶¯Çå³ı´ËÍ¨Öª
-		mNotification.flags = Notification.FLAG_ONGOING_EVENT;//FLAG_ONGOING_EVENT ÔÚ¶¥²¿³£×¤£¬¿ÉÒÔµ÷ÓÃÏÂÃæµÄÇå³ı·½·¨È¥³ı  FLAG_AUTO_CANCEL  µã»÷ºÍÇåÀí¿ÉÒÔÈ¥µ÷
-		//ÉèÖÃÏÔÊ¾Í¨ÖªÊ±µÄÄ¬ÈÏµÄ·¢Éù¡¢Õğ¶¯¡¢LightĞ§¹û  
+		//åœ¨é€šçŸ¥æ ä¸Šç‚¹å‡»æ­¤é€šçŸ¥åè‡ªåŠ¨æ¸…é™¤æ­¤é€šçŸ¥
+		mNotification.flags = Notification.FLAG_ONGOING_EVENT;//FLAG_ONGOING_EVENT åœ¨é¡¶éƒ¨å¸¸é©»ï¼Œå¯ä»¥è°ƒç”¨ä¸‹é¢çš„æ¸…é™¤æ–¹æ³•å»é™¤  FLAG_AUTO_CANCEL  ç‚¹å‡»å’Œæ¸…ç†å¯ä»¥å»è°ƒ
+		//è®¾ç½®æ˜¾ç¤ºé€šçŸ¥æ—¶çš„é»˜è®¤çš„å‘å£°ã€éœ‡åŠ¨ã€Lightæ•ˆæœ  
 		mNotification.defaults = Notification.DEFAULT_VIBRATE;
-		//ÉèÖÃ·¢³öÏûÏ¢µÄÄÚÈİ
-		mNotification.tickerText = "Í¨ÖªÀ´ÁË";
-		//ÉèÖÃ·¢³öÍ¨ÖªµÄÊ±¼ä  
+		//è®¾ç½®å‘å‡ºæ¶ˆæ¯çš„å†…å®¹
+		mNotification.tickerText = "é€šçŸ¥æ¥äº†";
+		//è®¾ç½®å‘å‡ºé€šçŸ¥çš„æ—¶é—´  
 		mNotification.when=System.currentTimeMillis(); 
-//		mNotification.flags = Notification.FLAG_AUTO_CANCEL; //ÔÚÍ¨ÖªÀ¸ÉÏµã»÷´ËÍ¨Öªºó×Ô¶¯Çå³ı´ËÍ¨Öª
-//		mNotification.setLatestEventInfo(this, "³£×¤²âÊÔ", "Ê¹ÓÃcancel()·½·¨²Å¿ÉÒÔ°ÑÎÒÈ¥µôÅ¶", null); //ÉèÖÃÏêÏ¸µÄĞÅÏ¢  ,Õâ¸ö·½·¨ÏÖÔÚÒÑ¾­²»ÓÃÁË 
+//		mNotification.flags = Notification.FLAG_AUTO_CANCEL; //åœ¨é€šçŸ¥æ ä¸Šç‚¹å‡»æ­¤é€šçŸ¥åè‡ªåŠ¨æ¸…é™¤æ­¤é€šçŸ¥
+//		mNotification.setLatestEventInfo(this, "å¸¸é©»æµ‹è¯•", "ä½¿ç”¨cancel()æ–¹æ³•æ‰å¯ä»¥æŠŠæˆ‘å»æ‰å“¦", null); //è®¾ç½®è¯¦ç»†çš„ä¿¡æ¯  ,è¿™ä¸ªæ–¹æ³•ç°åœ¨å·²ç»ä¸ç”¨äº† 
 		mNotificationManager.notify(notifyId, mNotification);
 	}
 	
-	/** ÏÔÊ¾Í¨ÖªÀ¸µã»÷Ìø×ªµ½Ö¸¶¨Activity */
+	/** æ˜¾ç¤ºé€šçŸ¥æ ç‚¹å‡»è·³è½¬åˆ°æŒ‡å®šActivity */
 	public void showIntentActivityNotify(){
-		// Notification.FLAG_ONGOING_EVENT --ÉèÖÃ³£×¤ Flag;Notification.FLAG_AUTO_CANCEL Í¨ÖªÀ¸ÉÏµã»÷´ËÍ¨Öªºó×Ô¶¯Çå³ı´ËÍ¨Öª
-//		notification.flags = Notification.FLAG_AUTO_CANCEL; //ÔÚÍ¨ÖªÀ¸ÉÏµã»÷´ËÍ¨Öªºó×Ô¶¯Çå³ı´ËÍ¨Öª
-		mBuilder.setAutoCancel(true)//µã»÷ºóÈÃÍ¨Öª½«ÏûÊ§  
-				.setContentTitle("²âÊÔ±êÌâ")
-				.setContentText("µã»÷Ìø×ª")
-				.setTicker("µãÎÒ");
-		//µã»÷µÄÒâÍ¼ACTIONÊÇÌø×ªµ½Intent
+		// Notification.FLAG_ONGOING_EVENT --è®¾ç½®å¸¸é©» Flag;Notification.FLAG_AUTO_CANCEL é€šçŸ¥æ ä¸Šç‚¹å‡»æ­¤é€šçŸ¥åè‡ªåŠ¨æ¸…é™¤æ­¤é€šçŸ¥
+//		notification.flags = Notification.FLAG_AUTO_CANCEL; //åœ¨é€šçŸ¥æ ä¸Šç‚¹å‡»æ­¤é€šçŸ¥åè‡ªåŠ¨æ¸…é™¤æ­¤é€šçŸ¥
+		mBuilder.setAutoCancel(true)//ç‚¹å‡»åè®©é€šçŸ¥å°†æ¶ˆå¤±  
+				.setContentTitle("æµ‹è¯•æ ‡é¢˜")
+				.setContentText("ç‚¹å‡»è·³è½¬")
+				.setTicker("ç‚¹æˆ‘");
+		//ç‚¹å‡»çš„æ„å›¾ACTIONæ˜¯è·³è½¬åˆ°Intent
 		Intent resultIntent = new Intent(this, MainActivity.class);
 		resultIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
 		PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,resultIntent, PendingIntent.FLAG_UPDATE_CURRENT);
@@ -155,19 +155,19 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 		mNotificationManager.notify(notifyId, mBuilder.build());
 	}
 	
-	/** ÏÔÊ¾Í¨ÖªÀ¸µã»÷´ò¿ªApk */
+	/** æ˜¾ç¤ºé€šçŸ¥æ ç‚¹å‡»æ‰“å¼€Apk */
 	public void showIntentApkNotify(){
-		// Notification.FLAG_ONGOING_EVENT --ÉèÖÃ³£×¤ Flag;Notification.FLAG_AUTO_CANCEL Í¨ÖªÀ¸ÉÏµã»÷´ËÍ¨Öªºó×Ô¶¯Çå³ı´ËÍ¨Öª
-//		notification.flags = Notification.FLAG_AUTO_CANCEL; //ÔÚÍ¨ÖªÀ¸ÉÏµã»÷´ËÍ¨Öªºó×Ô¶¯Çå³ı´ËÍ¨Öª
-		mBuilder.setAutoCancel(true)//µã»÷ºóÈÃÍ¨Öª½«ÏûÊ§  
-				.setContentTitle("ÏÂÔØÍê³É")
-				.setContentText("µã»÷°²×°")
-				.setTicker("ÏÂÔØÍê³É£¡");
-		//ÎÒÃÇÕâÀïĞèÒª×öµÄÊÇ´ò¿ªÒ»¸ö°²×°°ü
+		// Notification.FLAG_ONGOING_EVENT --è®¾ç½®å¸¸é©» Flag;Notification.FLAG_AUTO_CANCEL é€šçŸ¥æ ä¸Šç‚¹å‡»æ­¤é€šçŸ¥åè‡ªåŠ¨æ¸…é™¤æ­¤é€šçŸ¥
+//		notification.flags = Notification.FLAG_AUTO_CANCEL; //åœ¨é€šçŸ¥æ ä¸Šç‚¹å‡»æ­¤é€šçŸ¥åè‡ªåŠ¨æ¸…é™¤æ­¤é€šçŸ¥
+		mBuilder.setAutoCancel(true)//ç‚¹å‡»åè®©é€šçŸ¥å°†æ¶ˆå¤±  
+				.setContentTitle("ä¸‹è½½å®Œæˆ")
+				.setContentText("ç‚¹å‡»å®‰è£…")
+				.setTicker("ä¸‹è½½å®Œæˆï¼");
+		//æˆ‘ä»¬è¿™é‡Œéœ€è¦åšçš„æ˜¯æ‰“å¼€ä¸€ä¸ªå®‰è£…åŒ…
 		Intent apkIntent = new Intent();
 		apkIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		apkIntent.setAction(android.content.Intent.ACTION_VIEW);
-		//×¢Òâ£ºÕâÀïµÄÕâ¸öAPKÊÇ·ÅÔÚassetsÎÄ¼ş¼ĞÏÂ£¬»ñÈ¡Â·¾¶²»ÄÜÖ±½Ó¶ÁÈ¡µÄ£¬ÒªÍ¨¹ıCOYP³öÈ¥ÔÚ¶Á»òÕßÖ±½Ó¶ÁÈ¡×Ô¼º±¾µØµÄPATH£¬Õâ±ßÖ»ÊÇ×öÒ»¸öÌø×ªAPK£¬Êµ¼Ê´ò²»¿ªµÄ
+		//æ³¨æ„ï¼šè¿™é‡Œçš„è¿™ä¸ªAPKæ˜¯æ”¾åœ¨assetsæ–‡ä»¶å¤¹ä¸‹ï¼Œè·å–è·¯å¾„ä¸èƒ½ç›´æ¥è¯»å–çš„ï¼Œè¦é€šè¿‡COYPå‡ºå»åœ¨è¯»æˆ–è€…ç›´æ¥è¯»å–è‡ªå·±æœ¬åœ°çš„PATHï¼Œè¿™è¾¹åªæ˜¯åšä¸€ä¸ªè·³è½¬APKï¼Œå®é™…æ‰“ä¸å¼€çš„
 		String apk_path = "file:///android_asset/cs.apk";
 //		Uri uri = Uri.parse(apk_path);
 		Uri uri = Uri.fromFile(new File(apk_path));
@@ -210,7 +210,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 			showIntentApkNotify();
 			break;
 		case R.id.btn_show_progress:
-			startActivity(new Intent(getApplicationContext(), ProgressAcitivty.class));
+			startActivity(new Intent(getApplicationContext(), ProgressActivity.class));
 			break;
 		case R.id.btn_show_custom:
 			startActivity(new Intent(getApplicationContext(), CustomActivity.class));

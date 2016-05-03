@@ -7,7 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 public class BaseActivity extends Activity {
-	/** Notification¹ÜÀí */
+	/** Notificationç®¡ç† */
 	public NotificationManager mNotificationManager;
 
 	@Override
@@ -17,32 +17,32 @@ public class BaseActivity extends Activity {
 	}
 
 	/**
-	 * ³õÊ¼»¯ÒªÓÃµ½µÄÏµÍ³·şÎñ
+	 * åˆå§‹åŒ–è¦ç”¨åˆ°çš„ç³»ç»ŸæœåŠ¡
 	 */
 	private void initService() {
 		mNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 	}
 	
 	/** 
-	 * Çå³ıµ±Ç°´´½¨µÄÍ¨ÖªÀ¸ 
+	 * æ¸…é™¤å½“å‰åˆ›å»ºçš„é€šçŸ¥æ  
 	 */
 	public void clearNotify(int notifyId){
-		mNotificationManager.cancel(notifyId);//É¾³ıÒ»¸öÌØ¶¨µÄÍ¨ÖªID¶ÔÓ¦µÄÍ¨Öª
+		mNotificationManager.cancel(notifyId);//åˆ é™¤ä¸€ä¸ªç‰¹å®šçš„é€šçŸ¥IDå¯¹åº”çš„é€šçŸ¥
 //		mNotification.cancel(getResources().getString(R.string.app_name));
 	}
 	
 	/**
-	 * Çå³ıËùÓĞÍ¨ÖªÀ¸
+	 * æ¸…é™¤æ‰€æœ‰é€šçŸ¥æ 
 	 * */
 	public void clearAllNotify() {
-		mNotificationManager.cancelAll();// É¾³ıÄã·¢µÄËùÓĞÍ¨Öª
+		mNotificationManager.cancelAll();// åˆ é™¤ä½ å‘çš„æ‰€æœ‰é€šçŸ¥
 	}
 	
 	/**
-	 * »ñÈ¡Ä¬ÈÏµÄpendingIntent,ÎªÁË·ÀÖ¹2.3¼°ÒÔÏÂ°æ±¾±¨´í
-	 * flagsÊôĞÔ:
-	 * ÔÚ¶¥²¿³£×¤:Notification.FLAG_ONGOING_EVENT  
-	 * µã»÷È¥³ı£º Notification.FLAG_AUTO_CANCEL 
+	 * è·å–é»˜è®¤çš„pendingIntent,ä¸ºäº†é˜²æ­¢2.3åŠä»¥ä¸‹ç‰ˆæœ¬æŠ¥é”™
+	 * flagså±æ€§:
+	 * åœ¨é¡¶éƒ¨å¸¸é©»:Notification.FLAG_ONGOING_EVENT  
+	 * ç‚¹å‡»å»é™¤ï¼š Notification.FLAG_AUTO_CANCEL 
 	 */
 	public PendingIntent getDefalutIntent(int flags){
 		PendingIntent pendingIntent= PendingIntent.getActivity(this, 1, new Intent(), flags);

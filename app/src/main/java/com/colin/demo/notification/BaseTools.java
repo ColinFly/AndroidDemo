@@ -6,25 +6,25 @@ import android.content.pm.PackageManager;
 
 public class BaseTools {
 	/**
-	 * »ñÈ¡µ±Ç°Ó¦ÓÃ°æ±¾ºÅ
+	 * è·å–å½“å‰åº”ç”¨ç‰ˆæœ¬å·
 	 * @param context
 	 * @return version
 	 * @throws Exception
 	 */
 	public static String getAppVersion(Context context) throws Exception {
-		// »ñÈ¡packagemanagerµÄÊµÀı
+		// è·å–packagemanagerçš„å®ä¾‹
 		PackageManager packageManager = context.getPackageManager();
-		// getPackageName()ÊÇÄãµ±Ç°ÀàµÄ°üÃû£¬0´ú±íÊÇ»ñÈ¡°æ±¾ĞÅÏ¢
+		// getPackageName()æ˜¯ä½ å½“å‰ç±»çš„åŒ…åï¼Œ0ä»£è¡¨æ˜¯è·å–ç‰ˆæœ¬ä¿¡æ¯
 		PackageInfo packInfo = packageManager.getPackageInfo(context.getPackageName(),0);
 		String versionName = packInfo.versionName;
 		return versionName;
 	}
 	
 	/**
-	 * »ñÈ¡µ±Ç°ÏµÍ³SDK°æ±¾ºÅ
+	 * è·å–å½“å‰ç³»ç»ŸSDKç‰ˆæœ¬å·
 	 */
 	public static int getSystemVersion(){
-		/*»ñÈ¡µ±Ç°ÏµÍ³µÄandroid°æ±¾ºÅ*/
+		/*è·å–å½“å‰ç³»ç»Ÿçš„androidç‰ˆæœ¬å·*/
 		int version= android.os.Build.VERSION.SDK_INT;
 		return version;
 	}

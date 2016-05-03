@@ -10,24 +10,24 @@ import android.widget.RemoteViews;
 
 import com.colin.demo.R;
 
-public class ProgressAcitivty extends BaseActivity implements OnClickListener {
+public class ProgressActivity extends BaseActivity implements OnClickListener {
 	private Button btn_show_progress;
 	private Button btn_show_un_progress;
 	private Button btn_show_custom_progress;
-	/** NotificationµÄID */
+	/** Notificationçš„ID */
 	int notifyId = 102;
-	/** NotificationµÄ½ø¶ÈÌõÊıÖµ */
+	/** Notificationçš„è¿›åº¦æ¡æ•°å€¼ */
 	int progress = 0;
 	NotificationCompat.Builder mBuilder;
 	Button btn_download_start;
 	Button btn_download_pause;
 	Button btn_download_cancel;
-	/** ÏÂÔØÏß³ÌÊÇ·ñÔİÍ£ */
+	/** ä¸‹è½½çº¿ç¨‹æ˜¯å¦æš‚åœ */
 	public boolean isPause = false;
-	/** Í¨ÖªÀ¸ÄÚÊÇ·ñÊÇ×Ô¶¨ÒåµÄ */
+	/** é€šçŸ¥æ å†…æ˜¯å¦æ˜¯è‡ªå®šä¹‰çš„ */
 	public boolean isCustom = false;
 	DownloadThread downloadThread;
-	/** true:Îª²»È·¶¨ÑùÊ½µÄ   false:È·¶¨ÑùÊ½*/
+	/** true:ä¸ºä¸ç¡®å®šæ ·å¼çš„   false:ç¡®å®šæ ·å¼*/
 	public Boolean indeterminate = false;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -53,41 +53,41 @@ public class ProgressAcitivty extends BaseActivity implements OnClickListener {
 		btn_download_cancel.setOnClickListener(this);
 	}
 
-	/** ³õÊ¼»¯Í¨ÖªÀ¸ */
+	/** åˆå§‹åŒ–é€šçŸ¥æ  */
 	private void initNotify() {
 		mBuilder = new NotificationCompat.Builder(this);
-		mBuilder.setWhen(System.currentTimeMillis())// Í¨Öª²úÉúµÄÊ±¼ä£¬»áÔÚÍ¨ÖªĞÅÏ¢ÀïÏÔÊ¾
+		mBuilder.setWhen(System.currentTimeMillis())// é€šçŸ¥äº§ç”Ÿçš„æ—¶é—´ï¼Œä¼šåœ¨é€šçŸ¥ä¿¡æ¯é‡Œæ˜¾ç¤º
 				.setContentIntent(getDefalutIntent(0))
-				// .setNumber(number)//ÏÔÊ¾ÊıÁ¿
-				.setPriority(Notification.PRIORITY_DEFAULT)// ÉèÖÃ¸ÃÍ¨ÖªÓÅÏÈ¼¶
-				// .setAutoCancel(true)//ÉèÖÃÕâ¸ö±êÖ¾µ±ÓÃ»§µ¥»÷Ãæ°å¾Í¿ÉÒÔÈÃÍ¨Öª½«×Ô¶¯È¡Ïû
-				.setOngoing(false)// ture£¬ÉèÖÃËûÎªÒ»¸öÕıÔÚ½øĞĞµÄÍ¨Öª¡£ËûÃÇÍ¨³£ÊÇÓÃÀ´±íÊ¾Ò»¸öºóÌ¨ÈÎÎñ,ÓÃ»§»ı¼«²ÎÓë(Èç²¥·ÅÒôÀÖ)»òÒÔÄ³ÖÖ·½Ê½ÕıÔÚµÈ´ı,Òò´ËÕ¼ÓÃÉè±¸(ÈçÒ»¸öÎÄ¼şÏÂÔØ,Í¬²½²Ù×÷,Ö÷¶¯ÍøÂçÁ¬½Ó)
-				.setDefaults(Notification.DEFAULT_VIBRATE)// ÏòÍ¨ÖªÌí¼ÓÉùÒô¡¢ÉÁµÆºÍÕñ¶¯Ğ§¹ûµÄ×î¼òµ¥¡¢×îÒ»ÖÂµÄ·½Ê½ÊÇÊ¹ÓÃµ±Ç°µÄÓÃ»§Ä¬ÈÏÉèÖÃ£¬Ê¹ÓÃdefaultsÊôĞÔ£¬¿ÉÒÔ×éºÏ£º
-				// Notification.DEFAULT_ALL Notification.DEFAULT_SOUND Ìí¼ÓÉùÒô //
+				// .setNumber(number)//æ˜¾ç¤ºæ•°é‡
+				.setPriority(Notification.PRIORITY_DEFAULT)// è®¾ç½®è¯¥é€šçŸ¥ä¼˜å…ˆçº§
+				// .setAutoCancel(true)//è®¾ç½®è¿™ä¸ªæ ‡å¿—å½“ç”¨æˆ·å•å‡»é¢æ¿å°±å¯ä»¥è®©é€šçŸ¥å°†è‡ªåŠ¨å–æ¶ˆ
+				.setOngoing(false)// tureï¼Œè®¾ç½®ä»–ä¸ºä¸€ä¸ªæ­£åœ¨è¿›è¡Œçš„é€šçŸ¥ã€‚ä»–ä»¬é€šå¸¸æ˜¯ç”¨æ¥è¡¨ç¤ºä¸€ä¸ªåå°ä»»åŠ¡,ç”¨æˆ·ç§¯æå‚ä¸(å¦‚æ’­æ”¾éŸ³ä¹)æˆ–ä»¥æŸç§æ–¹å¼æ­£åœ¨ç­‰å¾…,å› æ­¤å ç”¨è®¾å¤‡(å¦‚ä¸€ä¸ªæ–‡ä»¶ä¸‹è½½,åŒæ­¥æ“ä½œ,ä¸»åŠ¨ç½‘ç»œè¿æ¥)
+				.setDefaults(Notification.DEFAULT_VIBRATE)// å‘é€šçŸ¥æ·»åŠ å£°éŸ³ã€é—ªç¯å’ŒæŒ¯åŠ¨æ•ˆæœçš„æœ€ç®€å•ã€æœ€ä¸€è‡´çš„æ–¹å¼æ˜¯ä½¿ç”¨å½“å‰çš„ç”¨æˆ·é»˜è®¤è®¾ç½®ï¼Œä½¿ç”¨defaultså±æ€§ï¼Œå¯ä»¥ç»„åˆï¼š
+				// Notification.DEFAULT_ALL Notification.DEFAULT_SOUND æ·»åŠ å£°éŸ³ //
 				// requires VIBRATE permission
 				.setSmallIcon(R.drawable.icon);
 	}
 
-	/** ÏÔÊ¾´ø½ø¶ÈÌõÍ¨ÖªÀ¸ */
+	/** æ˜¾ç¤ºå¸¦è¿›åº¦æ¡é€šçŸ¥æ  */
 	public void showProgressNotify() {
-		mBuilder.setContentTitle("µÈ´ıÏÂÔØ")
-				.setContentText("½ø¶È:")
-				.setTicker("¿ªÊ¼ÏÂÔØ");// Í¨ÖªÊ×´Î³öÏÖÔÚÍ¨ÖªÀ¸£¬´øÉÏÉı¶¯»­Ğ§¹ûµÄ
+		mBuilder.setContentTitle("ç­‰å¾…ä¸‹è½½")
+				.setContentText("è¿›åº¦:")
+				.setTicker("å¼€å§‹ä¸‹è½½");// é€šçŸ¥é¦–æ¬¡å‡ºç°åœ¨é€šçŸ¥æ ï¼Œå¸¦ä¸Šå‡åŠ¨ç”»æ•ˆæœçš„
 		if(indeterminate){
-			//²»È·¶¨½ø¶ÈµÄ
+			//ä¸ç¡®å®šè¿›åº¦çš„
 			mBuilder.setProgress(0, 0, true);
 		}else{
-			//È·¶¨½ø¶ÈµÄ
-			mBuilder.setProgress(100, progress, false); // Õâ¸ö·½·¨ÊÇÏÔÊ¾½ø¶ÈÌõ  ÉèÖÃÎªtrue¾ÍÊÇ²»È·¶¨µÄÄÇÖÖ½ø¶ÈÌõĞ§¹û
+			//ç¡®å®šè¿›åº¦çš„
+			mBuilder.setProgress(100, progress, false); // è¿™ä¸ªæ–¹æ³•æ˜¯æ˜¾ç¤ºè¿›åº¦æ¡  è®¾ç½®ä¸ºtrueå°±æ˜¯ä¸ç¡®å®šçš„é‚£ç§è¿›åº¦æ¡æ•ˆæœ
 		}
 		mNotificationManager.notify(notifyId, mBuilder.build());
 	}
 	
-	/** ÏÔÊ¾×Ô¶¨ÒåµÄ´ø½ø¶ÈÌõÍ¨ÖªÀ¸ */
+	/** æ˜¾ç¤ºè‡ªå®šä¹‰çš„å¸¦è¿›åº¦æ¡é€šçŸ¥æ  */
 	private void showCustomProgressNotify(String status) {
 		RemoteViews mRemoteViews = new RemoteViews(getPackageName(), R.layout.view_nofify_custom_progress);
 		mRemoteViews.setImageViewResource(R.id.custom_progress_icon, R.drawable.icon);
-		mRemoteViews.setTextViewText(R.id.tv_custom_progress_title, "½ñÈÕÍ·Ìõ");
+		mRemoteViews.setTextViewText(R.id.tv_custom_progress_title, "ä»Šæ—¥å¤´æ¡");
 		mRemoteViews.setTextViewText(R.id.tv_custom_progress_status, status);
 		if(progress >= 100 || downloadThread == null){
 			mRemoteViews.setProgressBar(R.id.custom_progressbar, 0, 0, false);
@@ -98,13 +98,13 @@ public class ProgressAcitivty extends BaseActivity implements OnClickListener {
 		}
 		mBuilder.setContent(mRemoteViews)
 				.setContentIntent(getDefalutIntent(0))
-				.setTicker("Í·Ìõ¸üĞÂ");
+				.setTicker("å¤´æ¡æ›´æ–°");
 		Notification nitify = mBuilder.build();
 		nitify.contentView = mRemoteViews;
 		mNotificationManager.notify(notifyId, nitify);
 	}
 	
-	/** ¿ªÊ¼ÏÂÔØ */
+	/** å¼€å§‹ä¸‹è½½ */
 	public void startDownloadNotify() {
 		isPause = false;
 		if (downloadThread != null && downloadThread.isAlive()) {
@@ -115,39 +115,39 @@ public class ProgressAcitivty extends BaseActivity implements OnClickListener {
 		}
 	}
 
-	/** ÔİÍ£ÏÂÔØ */
+	/** æš‚åœä¸‹è½½ */
 	public void pauseDownloadNotify() {
 		isPause = true;
 		if(!isCustom){
-			mBuilder.setContentTitle("ÒÑÔİÍ£");
+			mBuilder.setContentTitle("å·²æš‚åœ");
 			setNotify(progress);
 		}else{
-			showCustomProgressNotify("ÒÑÔİÍ£");
+			showCustomProgressNotify("å·²æš‚åœ");
 		}
 	}
 
-	/** È¡ÏûÏÂÔØ */
+	/** å–æ¶ˆä¸‹è½½ */
 	public void stopDownloadNotify() {
 		if (downloadThread != null) {
 			downloadThread.interrupt();
 		}
 		downloadThread = null;
 		if(!isCustom){
-			mBuilder.setContentTitle("ÏÂÔØÒÑÈ¡Ïû").setProgress(0, 0, false);
+			mBuilder.setContentTitle("ä¸‹è½½å·²å–æ¶ˆ").setProgress(0, 0, false);
 			mNotificationManager.notify(notifyId, mBuilder.build());
 		}else{
-			showCustomProgressNotify("ÏÂÔØÒÑÈ¡Ïû");
+			showCustomProgressNotify("ä¸‹è½½å·²å–æ¶ˆ");
 		}
 	}
 
-	/** ÉèÖÃÏÂÔØ½ø¶È */
+	/** è®¾ç½®ä¸‹è½½è¿›åº¦ */
 	public void setNotify(int progress) {
-		mBuilder.setProgress(100, progress, false); // Õâ¸ö·½·¨ÊÇÏÔÊ¾½ø¶ÈÌõ
+		mBuilder.setProgress(100, progress, false); // è¿™ä¸ªæ–¹æ³•æ˜¯æ˜¾ç¤ºè¿›åº¦æ¡
 		mNotificationManager.notify(notifyId, mBuilder.build());
 	}
 
 	/**
-	 * ÏÂÔØÏß³Ì
+	 * ä¸‹è½½çº¿ç¨‹
 	 */
 	class DownloadThread extends Thread {
 
@@ -164,12 +164,12 @@ public class ProgressAcitivty extends BaseActivity implements OnClickListener {
 				if (!isPause) {
 					progress = now_progress;
 					if(!isCustom){
-						mBuilder.setContentTitle("ÏÂÔØÖĞ");
+						mBuilder.setContentTitle("ä¸‹è½½ä¸­");
 						if(!indeterminate){
 							setNotify(progress);
 						}
 					}else{
-						showCustomProgressNotify("ÏÂÔØÖĞ");
+						showCustomProgressNotify("ä¸‹è½½ä¸­");
 					}
 					now_progress += 10;
 				}
@@ -182,12 +182,12 @@ public class ProgressAcitivty extends BaseActivity implements OnClickListener {
 			// When the loop is finished, updates the notification
 			if(downloadThread != null){
 				if(!isCustom){
-					mBuilder.setContentText("ÏÂÔØÍê³É")
+					mBuilder.setContentText("ä¸‹è½½å®Œæˆ")
 					// Removes the aty_notify_progress bar
 					.setProgress(0, 0, false);
 					mNotificationManager.notify(notifyId, mBuilder.build());
 				}else{
-					showCustomProgressNotify("ÏÂÔØÍê³É");
+					showCustomProgressNotify("ä¸‹è½½å®Œæˆ");
 				}
 			}
 		}
@@ -212,7 +212,7 @@ public class ProgressAcitivty extends BaseActivity implements OnClickListener {
 			downloadThread = null;
 			isCustom = true;
 			indeterminate = false;
-			showCustomProgressNotify("µÈ´ıÏÂÔØ..");
+			showCustomProgressNotify("ç­‰å¾…ä¸‹è½½..");
 			break;
 		case R.id.btn_download_start:
 			startDownloadNotify();
