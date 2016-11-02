@@ -19,6 +19,11 @@ public abstract class BaseActivity extends Activity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         mContext = this;
         EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void setContentView(int layoutResID) {
+        super.setContentView(layoutResID);
         ButterKnife.inject(this);
     }
 
