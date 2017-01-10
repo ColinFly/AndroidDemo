@@ -25,7 +25,7 @@ public class MultiItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     private String[] mTitles;
 
 
-    public static enum ITEM_TYPE {
+    public enum ITEM_TYPE {
         IMAGE, TEXT
     }
     public MultiItemAdapter(Context context) {
