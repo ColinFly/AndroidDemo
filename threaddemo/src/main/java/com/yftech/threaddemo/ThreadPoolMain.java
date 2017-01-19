@@ -17,6 +17,19 @@ public class ThreadPoolMain {
 //        scheduledThreadPool();
     }
 
+
+    Runnable mRunnable=new Runnable() {
+        @Override
+        public void run() {
+            System.out.println(Thread.currentThread());
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    };
+
     public static int mark;
 
     /**
