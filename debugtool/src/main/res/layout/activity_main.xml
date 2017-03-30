@@ -7,20 +7,58 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.yftech.debugtool.MainActivity">
-    <Button
-        android:id="@+id/btn_host"
-        android:text="主模式"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <Button
-        android:id="@+id/btn_debug"
-        android:text="调试模式"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <Button
-        android:id="@+id/btn_reboot"
-        android:text="重启机器"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 
+    <Button
+        android:text="显示"
+        android:id="@+id/btn_display"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/ll_function"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/btn_host"
+            android:text="HOST模式"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/btn_debug"
+            android:text="调试模式"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:text="开启adb"
+            android:id="@+id/btn_adb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/btn_reboot"
+            android:text="重启机器"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/btn_acc"
+            android:text="ACC OFF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:text="打开后台"
+            android:id="@+id/btn_background"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:text="执行卸载"
+            android:id="@+id/btn_uninstall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:text="IP地址"
+            android:id="@+id/btn_ip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
 </LinearLayout>
