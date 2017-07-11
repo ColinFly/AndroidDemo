@@ -1,1 +1,1 @@
-include ':app', ':library', ':recyclerviewdemo', ':androidserver', ':sqlitedemo', ':greendao', ':threaddemo',':debugtool'
+include ':app', ':library', ':recyclerviewdemo', ':androidserver', ':sqlitedemo', ':greendao', ':threaddemo', ':debugtool', ':kuaima'
