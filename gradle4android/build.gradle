@@ -1,11 +1,14 @@
 apply plugin: 'com.android.application'
+
 def releaseTime() {
     return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("GMT+8"))
 }
-def releaseDetailTime(){
+
+def releaseDetailTime() {
     return new Date().format("yyyy-MM-dd HH:mm:ss", TimeZone.getTimeZone("GMT+8"))
 }
-def outputPathName = getRootDir().getPath()+"/gradle4android/apk"
+
+def outputPathName = getRootDir().getPath() + "/gradle4android/apk"
 
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
@@ -21,52 +24,64 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     }
-    signingConfigs{
-        yfconfig{
+    signingConfigs {
+        yfconfig {
             storeFile file("../colin.jks")
             storePassword '123456'
             keyAlias 'gradle4android'
             keyPassword 'gradle4android'
         }
-    }
-    buildTypes {
-        release {
-            minifyEnabled false//是否启动混淆
-            zipAlignEnabled false//是否启动zipAlign
-            shrinkResources false // 是否移除无用的resource文件
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            buildConfigField("String","SERVER_HOST",'\"http://www.release.com/\"')
-            signingConfig signingConfigs.yfconfig
-        }
-        debug{
-            buildConfigField("String","SERVER_HOST",'\"http://www.debug.com/\"')
-            buildConfigField("String","BUILD_TIME","\"${releaseDetailTime()}\"")
-        }
-//        //针对很多渠道
+        buildTypes {
+            release {
+                minifyEnabled false//是否启动混淆
+                zipAlignEnabled false//是否启动zipAlign
+                shrinkResources false // 是否移除无用的resource文件
+                proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+                buildConfigField("String", "SERVER_HOST", '\"http://www.release.com/\"')
+                signingConfig signingConfigs.yfconfig
+            }
+            debug {
+                buildConfigField("String", "SERVER_HOST", '\"http://www.debug.com/\"')
+                buildConfigField("String", "BUILD_TIME", "\"${releaseDetailTime()}\"")
+            }
+//        针对很多渠道
+//        <meta-data android:value="${UMENG_CHANNEL_VALUE}" android:name="UMENG_CHANNEL"/>
+//            AndroidManifest里的这个UMENG_CHANNEL_VALUE占位符就可以在这里动态替换掉,
+//        用来告诉友盟APP来自哪个渠道,name来自于Project的getName属性,这里是简写
 //        productFlavors.all { flavor ->
 //            manifestPlaceholders.put("UMENG_CHANNEL_VALUE", name)
 //        }
+        }
     }
     android.applicationVariants.all {
         variant ->
             variant.outputs.each {
                 output ->
                     def fileName = "app_v${variant.versionName}_${releaseTime()}_${variant.productFlavors[0].name}_${buildType.name}.apk"
-//                    output.outputFile = new File(outputPathName,"app_v" + "${variant.versionName}_" + buildType.name + ".apk");
-                    output.outputFile = new File(outputPathName,fileName);
+//                    def fileName="app_v" + "${variant.versionName}_" + buildType.name + ".apk"
+                    output.outputFile = new File(outputPathName, fileName);
             }
     }
 
-    // 友盟多渠道打包
+    // 友盟多渠道打包,apk差分包
     productFlavors {
-        wandoujia {}
-        _360 {}
-//        baidu {}
+        //相当于更改了包名,这样就可以同时安装多个app测试
+        wandoujia {
+            applicationId "com.yf.gradle4android.wandoujia"
+            buildConfigField("String", "PRODUCT_FLAVOR", "\"wandoujia\"")
+        }
+//        baidu {
+//            applicationId "com.yf.gradle4android.baidu"
+//            buildConfigField("String","PRODUCT_FLAVOR","\"baidu\"")
+//        }
+
+//        _360 {}
+
 //        xiaomi {}
 //        tencent {}
 //        taobao {}
     }
-    lintOptions{
+    lintOptions {
         abortOnError false
     }
 }
@@ -74,5 +89,23 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile rootProject.ext.dependencies.design
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.3'
+}
+
+task launchApp << {
+    exec {
+        println "start app now..."
+        //on Windows
+//        commandLine('cmd','/c','adb','shell','am','start','-n',"com.yf.gradle4android/com.yf.gradle4android.MainActivity")
+        //onLinux
+        commandLine('adb', 'shell', 'am', 'start', '-n', "com.yf.gradle4android/com.yf.gradle4android.MainActivity")
+
+    }
+}
+
+task rmApk << {
+    exec {
+        commandLine('./rmApk.sh')
+    }
 }
 

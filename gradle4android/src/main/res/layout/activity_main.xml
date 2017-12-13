@@ -8,6 +8,8 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.yf.gradle4android.MainActivity">
 
-    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+    <TextView
+        android:id="@+id/tv_info"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
         android:text="Hello World!" />
 </RelativeLayout>
