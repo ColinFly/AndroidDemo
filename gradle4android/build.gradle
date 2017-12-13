@@ -1,0 +1,78 @@
+apply plugin: 'com.android.application'
+def releaseTime() {
+    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("GMT+8"))
+}
+def releaseDetailTime(){
+    return new Date().format("yyyy-MM-dd HH:mm:ss", TimeZone.getTimeZone("GMT+8"))
+}
+def outputPathName = getRootDir().getPath()+"/gradle4android/apk"
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+
+    defaultConfig {
+        applicationId "com.yf.gradle4android"
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    signingConfigs{
+        yfconfig{
+            storeFile file("../colin.jks")
+            storePassword '123456'
+            keyAlias 'gradle4android'
+            keyPassword 'gradle4android'
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false//是否启动混淆
+            zipAlignEnabled false//是否启动zipAlign
+            shrinkResources false // 是否移除无用的resource文件
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField("String","SERVER_HOST",'\"http://www.release.com/\"')
+            signingConfig signingConfigs.yfconfig
+        }
+        debug{
+            buildConfigField("String","SERVER_HOST",'\"http://www.debug.com/\"')
+            buildConfigField("String","BUILD_TIME","\"${releaseDetailTime()}\"")
+        }
+//        //针对很多渠道
+//        productFlavors.all { flavor ->
+//            manifestPlaceholders.put("UMENG_CHANNEL_VALUE", name)
+//        }
+    }
+    android.applicationVariants.all {
+        variant ->
+            variant.outputs.each {
+                output ->
+                    def fileName = "app_v${variant.versionName}_${releaseTime()}_${variant.productFlavors[0].name}_${buildType.name}.apk"
+//                    output.outputFile = new File(outputPathName,"app_v" + "${variant.versionName}_" + buildType.name + ".apk");
+                    output.outputFile = new File(outputPathName,fileName);
+            }
+    }
+
+    // 友盟多渠道打包
+    productFlavors {
+        wandoujia {}
+        _360 {}
+//        baidu {}
+//        xiaomi {}
+//        tencent {}
+//        taobao {}
+    }
+    lintOptions{
+        abortOnError false
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile rootProject.ext.dependencies.design
+}
+
