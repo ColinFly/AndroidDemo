@@ -1,2 +1,2 @@
-include ':app', ':library', ':recyclerviewdemo', ':androidserver', ':sqlitedemo', ':greendao', ':gradle4android',
+include ':app', ':library', ':recyclerviewdemo', ':androidserver', ':sqlitedemo', ':greendao', ':gradle4android', ':rxjava',
         ':threaddemo', ':debugtool', ':kuaima', ':musicservice', ':musicclient', ':musiclib'
