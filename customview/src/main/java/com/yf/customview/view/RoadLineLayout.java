@@ -1,9 +1,11 @@
-package com.yf.customview;
+package com.yf.customview.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+
+import com.yf.customview.R;
 
 /**
  * Created by colin on 18-4-18.

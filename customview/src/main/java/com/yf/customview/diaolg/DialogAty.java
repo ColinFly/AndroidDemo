@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.yf.customview.R;
-import com.yf.customview.RoadLineLayout;
+import com.yf.customview.view.RoadLineLayout;
 
 import static android.text.Spanned.SPAN_INCLUSIVE_EXCLUSIVE;
 

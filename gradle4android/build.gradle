@@ -66,10 +66,10 @@ android {
     // 友盟多渠道打包,apk差分包
     productFlavors {
         //相当于更改了包名,这样就可以同时安装多个app测试
-        wandoujia {
-            applicationId "com.yf.gradle4android.wandoujia"
-            buildConfigField("String", "PRODUCT_FLAVOR", "\"wandoujia\"")
-        }
+//        wandoujia {
+//            applicationId "com.yf.gradle4android.wandoujia"
+//            buildConfigField("String", "PRODUCT_FLAVOR", "\"wandoujia\"")
+//        }
 //        baidu {
 //            applicationId "com.yf.gradle4android.baidu"
 //            buildConfigField("String","PRODUCT_FLAVOR","\"baidu\"")
@@ -87,9 +87,8 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile rootProject.ext.dependencies.design
-    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.3'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation rootProject.ext.dependencies.design
 }
 
 task launchApp << {
