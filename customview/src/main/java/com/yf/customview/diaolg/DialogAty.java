@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.yf.customview.CountDownManager;
 import com.yf.customview.R;
 import com.yf.customview.view.RoadLineLayout;
 
@@ -47,6 +48,25 @@ public class DialogAty extends Activity implements View.OnClickListener {
         int indexMeter = txt.indexOf("米");
         turnDistanceSb.setSpan(colorGrayCopy,indexMeter,indexMeter+1,SPAN_INCLUSIVE_EXCLUSIVE);
         mSpannableText.setText(turnDistanceSb);
+
+
+        final Button button1 = (Button) findViewById(R.id.cancel_btn1);
+        CountDownManager.getInstance().showBtn(button1);
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CountDownManager.getInstance().hideBtn(button1);
+            }
+        });
+
+        final Button button2 = (Button) findViewById(R.id.cancel_btn2);
+        CountDownManager.getInstance().showBtn(button2);
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CountDownManager.getInstance().hideBtn(button2);
+            }
+        });
 
     }
 

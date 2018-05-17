@@ -10,6 +10,7 @@ import static android.text.Spanned.SPAN_INCLUSIVE_EXCLUSIVE;
 
 /**
  * Created by colin on 18-5-11.
+ * 文本美化处理的工具类
  */
 public class TextHandleUtil {
     private static TextHandleUtil ourInstance = new TextHandleUtil();

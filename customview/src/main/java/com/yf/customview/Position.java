@@ -2,6 +2,7 @@ package com.yf.customview;
 
 /**
  * Created by colin on 18-1-30.
+ * 坐标点抽象类
  */
 
 public class Position implements Comparable<Position>{

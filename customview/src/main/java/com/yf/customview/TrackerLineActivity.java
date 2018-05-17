@@ -17,9 +17,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class MainActivity extends Activity {
+/**
+ * 轨迹线提取的页面
+ */
+public class TrackerLineActivity extends Activity {
 
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "TrackerLineActivity";
     private static final int MSG_WHAT_ALL_POINTS = 1;
     private static final int MSG_WHAT_TARGET_POINTS = 2;
     private static final int MSG_WHAT_NEXT_TASK = 3;

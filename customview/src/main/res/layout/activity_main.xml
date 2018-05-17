@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
 
     android:orientation="vertical"
-    tools:context="com.yf.customview.MainActivity">
+    tools:context="com.yf.customview.TrackerLineActivity">
 
 
     

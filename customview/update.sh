@@ -11,4 +11,4 @@ adb shell sync
 
 sleep 2
 
-adb shell am start -n "com.yf.customview/com.yf.customview.MainActivity" -a android.intent.action.MAIN -c android.intent.category.LAUNCHER
+adb shell am start -n "com.yf.customview/com.yf.customview.TrackerLineActivity" -a android.intent.action.MAIN -c android.intent.category.LAUNCHER
