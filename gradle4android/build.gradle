@@ -53,15 +53,15 @@ android {
 //        }
         }
     }
-    android.applicationVariants.all {
-        variant ->
-            variant.outputs.each {
-                output ->
-                    def fileName = "app_v${variant.versionName}_${releaseTime()}_${variant.productFlavors[0].name}_${buildType.name}.apk"
-//                    def fileName="app_v" + "${variant.versionName}_" + buildType.name + ".apk"
-                    output.outputFile = new File(outputPathName, fileName);
-            }
-    }
+//    android.applicationVariants.all {
+//        variant ->
+//            variant.outputs.each {
+//                output ->
+//                    def fileName = "app_v${variant.versionName}_${releaseTime()}_${variant.productFlavors[0].name}_${buildType.name}.apk"
+////                    def fileName="app_v" + "${variant.versionName}_" + buildType.name + ".apk"
+//                    output.outputFile = new File(outputPathName, fileName);
+//            }
+//    }
 
     // 友盟多渠道打包,apk差分包
     productFlavors {

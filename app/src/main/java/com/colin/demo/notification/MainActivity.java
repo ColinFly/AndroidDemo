@@ -1,13 +1,11 @@
 package com.colin.demo.notification;
 
 
-import java.io.File;
-
-import android.net.Uri;
-import android.os.Bundle;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.view.Menu;
 import android.view.View;
@@ -15,6 +13,8 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 
 import com.colin.demo.R;
+
+import java.io.File;
 
 /*
  * 通知栏应用
