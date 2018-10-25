@@ -6,17 +6,17 @@ import android.util.LruCache;
 /**
  * 图片缓存工具类(内存缓存)
  */
-public class ImageLoader {
-    private static ImageLoader mImageLoader;
+public class ImageCache {
+    private static ImageCache mImageCache;
 
-    public static ImageLoader getInstance() {
-        if (mImageLoader == null) {
-            mImageLoader=new ImageLoader();
+    public static ImageCache getInstance() {
+        if (mImageCache == null) {
+            mImageCache =new ImageCache();
         }
-        return mImageLoader;
+        return mImageCache;
     }
 
-    private ImageLoader() {
+    private ImageCache() {
         initConfig();
     }
 

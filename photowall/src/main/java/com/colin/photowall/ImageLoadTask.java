@@ -13,30 +13,32 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import static com.colin.photowall.ImageScrollView.tasks;
+
 /**
  * 图片下载类
  */
-public class ImageDownloadTask extends AsyncTask<String, Void, Bitmap> {
-    private static final String TAG = "ImageDownloadTask";
+public class ImageLoadTask extends AsyncTask<String, Void, Bitmap> {
+    private static final String TAG = "ImageLoadTask";
     private static final int mRequiredImageWidth = ImageScrollView.mColumnWidth;
     private String mImageUrl;
 
 
-    public interface ImageDownloadCallback {
+    public interface ImageLoadCallback {
         void onDownloadFinish(Bitmap bitmap, String url);
     }
 
-    private ImageDownloadCallback mImageDownloadCallback;
+    private ImageLoadCallback mImageLoadCallback;
 
-    public ImageDownloadTask(ImageDownloadCallback downloadCallback) {
-        this.mImageDownloadCallback = downloadCallback;
+    public ImageLoadTask(ImageLoadCallback downloadCallback) {
+        this.mImageLoadCallback = downloadCallback;
     }
 
     @Override
     protected Bitmap doInBackground(String... strings) {//起一个子线程去下载
         mImageUrl = strings[0];
         Log.i(TAG, "doInBackground: " + mImageUrl);
-        Bitmap imageBitmap = ImageLoader.getInstance().getBitmapFromMemoryCache(mImageUrl);
+        Bitmap imageBitmap = ImageCache.getInstance().getBitmapFromMemoryCache(mImageUrl);
         //内存找不到-->本地找不到--网络下载
         if (imageBitmap == null) {
             imageBitmap = loadImage(mImageUrl);
@@ -47,8 +49,9 @@ public class ImageDownloadTask extends AsyncTask<String, Void, Bitmap> {
     @Override
     protected void onPostExecute(Bitmap bitmap) {//下载完毕后执行的方法
         Log.i(TAG, "onPostExecute: ");
-        if (mImageDownloadCallback != null) {
-            mImageDownloadCallback.onDownloadFinish(bitmap, mImageUrl);
+        if (mImageLoadCallback != null) {
+            mImageLoadCallback.onDownloadFinish(bitmap, mImageUrl);
+            tasks.remove(this);
         }
     }
 
@@ -63,7 +66,7 @@ public class ImageDownloadTask extends AsyncTask<String, Void, Bitmap> {
         } else {//本地存在也要加载到内存
             bitmap = BitmapUtils.decodeSampledBitmapFromResource(imageFile.getPath(), mRequiredImageWidth);
             if (bitmap != null) {
-                ImageLoader.getInstance().addBitmapToMemoryCache(imageUrl, bitmap);
+                ImageCache.getInstance().addBitmapToMemoryCache(imageUrl, bitmap);
                 return bitmap;
             }
         }
@@ -113,8 +116,7 @@ public class ImageDownloadTask extends AsyncTask<String, Void, Bitmap> {
             }
         }
         if (imageFile != null) {
-            Bitmap bitmap = saveToCache(imageFile, imageUrl);
-            return bitmap;
+            return saveToCache(imageFile, imageUrl);
 
         }
         return null;
@@ -128,7 +130,7 @@ public class ImageDownloadTask extends AsyncTask<String, Void, Bitmap> {
         Log.i(TAG, "saveToCache: ");
         Bitmap bitmap = BitmapUtils.decodeSampledBitmapFromResource(imageFile.getPath(), mRequiredImageWidth);
         if (bitmap != null) {
-            ImageLoader.getInstance().addBitmapToMemoryCache(imageUrl, bitmap);
+            ImageCache.getInstance().addBitmapToMemoryCache(imageUrl, bitmap);
             return bitmap;
         }
         return null;
