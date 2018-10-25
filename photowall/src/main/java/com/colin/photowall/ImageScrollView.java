@@ -1,6 +1,7 @@
 package com.colin.photowall;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Environment;
 import android.os.Handler;
@@ -19,6 +20,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArraySet;
+
+import static com.colin.photowall.ImageLoadTask.getImagePath;
 
 /**
  * 基于ScrollView改造成瀑布流图片容器
@@ -69,6 +72,7 @@ public class ImageScrollView extends ScrollView implements ImageLoadTask.ImageLo
 
     }
 
+    //增加多少个子元素就onLayout多少次
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         Log.i(TAG, "onLayout: changed: " + changed + " l: " + l + " t " + t + " r " + r + " b " + b);
@@ -129,7 +133,7 @@ public class ImageScrollView extends ScrollView implements ImageLoadTask.ImageLo
         }
     }
 
-    private void addImage(Bitmap bitmap, int columnWidth, int scaledHeight, String url) {
+    private void addImage(Bitmap bitmap, int columnWidth, int scaledHeight, final String url) {
         Log.i(TAG, "addImage: bitmap: " + bitmap.toString());
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(columnWidth, scaledHeight);
         ImageView imageView = new ImageView(getContext());
@@ -138,6 +142,14 @@ public class ImageScrollView extends ScrollView implements ImageLoadTask.ImageLo
         imageView.setScaleType(ImageView.ScaleType.FIT_XY);
         imageView.setPadding(5, 5, 5, 5);
         imageView.setTag(R.string.image_url, url);
+        imageView.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), ImageDetailAty.class);
+                intent.putExtra("image_path", getImagePath(url));
+                getContext().startActivity(intent);
+            }
+        });
         findColumnToAdd(imageView, scaledHeight).addView(imageView);
         mImageViewList.add(imageView);
     }

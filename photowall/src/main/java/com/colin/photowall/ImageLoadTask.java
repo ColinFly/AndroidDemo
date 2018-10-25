@@ -139,7 +139,7 @@ public class ImageLoadTask extends AsyncTask<String, Void, Bitmap> {
     /**
      * @return 获取图片的本地存储路径
      */
-    private String getImagePath(String imageUrl) {
+    public static String getImagePath(String imageUrl) {
         int lastSlashIndex = imageUrl.lastIndexOf("/");
         String imageName = imageUrl.substring(lastSlashIndex + 1);
         String imageDir = Environment.getExternalStorageDirectory()
