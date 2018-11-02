@@ -1,0 +1,36 @@
+
+##MVC模式:
+上来就是干
+View===Model===Controller===View
+
+- Model:数据模型和业务(biz)
+- View:就是布局文件,就是单纯的View元素
+- Controller:Activity又像View又像Controller
+> Most of the modern Android applications just use View-Model architecture，everything is connected with Activity.
+适用场景:小项目
+
+##MVP模式
+先分析需求
+定义接口，写好主要业务
+最后实现View的具体逻辑和Biz的具体逻辑
+
+View===Presenter===Model
+
+- Model:实体模型和业务逻辑(biz)
+- View:Activity等与用户交互
+- Presenter：组合Model和View
+适用场景:中小项目
+
+##MVVM模式
+View---ViewModel===Model
+
+- Model:实体模型(bean和biz)
+- View:布局文件
+- VM:ViewModel:binder所在之处,对外暴露公共属性，View和Model的绑定器
+
+Model===ViewModel---View
+
+MVVM是一种架构模式，而DataBinding是一个实现数据和UI绑定的框架，是构建MVVM模式的一个工具。
+
+
+
