@@ -42,6 +42,8 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     implementation "com.android.support:appcompat-v7:$support_version"
     implementation "com.android.support:recyclerview-v7:$support_version"
+    implementation "com.android.support:design:$support_version"
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
 
     //ButterKnife
     def butter_knife_version = "8.8.1"
@@ -58,5 +60,9 @@ dependencies {
     def archLifecycleVersion = '1.1.1'
     implementation "android.arch.lifecycle:extensions:$archLifecycleVersion"
     annotationProcessor "android.arch.lifecycle:compiler:$archLifecycleVersion"
+
+//    //kotlin_version
+//    def kotlin_version="1.0.7"
+//    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
 }

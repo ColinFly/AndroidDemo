@@ -23,7 +23,7 @@ public class LoginActivity extends Activity implements IUserLoginView {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.mvp_activity_login);
         mUserNameEdit = findViewById(R.id.et_username);
         mPasswordEdit = findViewById(R.id.et_password);
         mLoginBtn = findViewById(R.id.btn_login);
