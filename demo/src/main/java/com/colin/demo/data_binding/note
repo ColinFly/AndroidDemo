@@ -1,0 +1,15 @@
+参考文章:
+https://www.jianshu.com/p/53925ccb900e
+https://www.jianshu.com/p/70316eb4e0f8
+https://www.jianshu.com/p/4d30efa6b500
+https://www.jianshu.com/p/d429174b8d07
+
+早在2015谷歌 I/O大会上，就介绍了一个新的框架DataBinding，从名字就可以看出来，这是一个数据绑定框架。
+我们为什么要使用DataBinding？
+1.再也不需要编写findViewById了，有人会说，已经有butterknife了，很好用。
+2.更新UI数据需切换至UI线程，也有人说，有rxjava了。但是DataBinding，不仅仅能解决这2个问题，
+它的核心优势在于，它解决了将数据分解映射到各个view的问题。什么个意思？具体来说，就是针对
+每个Activity或者Fragment的布局，在编译阶段，会生成一个ViewDataBinding类的对象，该对象持
+有Activity要展示的数据和布局中的各个view的引用。同时还有如下优势：将数据分解到各个view、
+在UI线程上更新数据、监控数据的变化，实时更新，这样一来，你要展示的数据已经和展示它的布局
+紧紧绑定在了一起。我认为这才是DataBinding真正的魅力所在。

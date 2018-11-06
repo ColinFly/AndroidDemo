@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="user"
+            type="com.colin.demo.data_binding.UserBean" />
+
+        <import type="java.util.List" />
+
+        <import type="java.util.Map" />
+
+        <import type="android.view.View.OnClickListener" />
+
+        <import type="com.colin.demo.data_binding.OnClickHandler" />
+
+        <!--泛型的支持会在编译时期报红线，但是是可以直接运行的
+               但是需要通过转义字符才行，如：<号用&lt表示;>号用&gt表示;-->
+        <variable
+            name="list"
+            type="List&lt;String&gt;" />
+
+        <variable
+            name="map"
+            type="Map&lt;String,Object&gt;" />
+
+        <variable
+            name="array"
+            type="String[]" />
+
+        <variable
+            name="clickListener"
+            type="OnClickListener" />
+
+        <variable
+            name="handler"
+            type="OnClickHandler" />
+
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{user.name}" />
+        <!--注意：这里age是int类型，必须转化为String，否则会运行时异常-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(user.age)}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{list[0]}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{list.get(1)}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{map[`key0`]}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{map[`key1`]}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{array[0]}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{array[1]}" />
+
+
+        <Button
+            android:id="@+id/click_btn"
+            android:text="点我"
+            android:onClick="@{clickListener}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+        <Button
+            android:id="@+id/click2_btn"
+            android:text="点我"
+            android:onClick="@{clickListener}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:text="click"
+            android:onClick="@{handler::onClick}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+</layout>
