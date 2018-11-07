@@ -28,6 +28,8 @@
         <activity android:name=".android_room_with_view.WordMainActivity" />
         <activity android:name=".android_room_with_view.NewWordActivity" />
         <activity android:name=".data_binding.DataBindingMainActivity" />
+        <activity android:name=".data_binding.recyclerview.RecyclerViewActivity" />
+        <activity android:name=".data_binding.DoubleBindActivity" />
     </application>
 
 </manifest>

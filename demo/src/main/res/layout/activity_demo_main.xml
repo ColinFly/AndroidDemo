@@ -26,6 +26,11 @@
             android:id="@+id/btn_data_binding"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/btn_data_bind_recycler_view"
+            android:text="Data Bind RecyclerView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 </ScrollView>
