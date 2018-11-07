@@ -6,6 +6,9 @@
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -30,6 +33,7 @@
         <activity android:name=".data_binding.DataBindingMainActivity" />
         <activity android:name=".data_binding.recyclerview.RecyclerViewActivity" />
         <activity android:name=".data_binding.DoubleBindActivity" />
+        <activity android:name=".data_binding.double_bind.DoubleBindActivity" />
     </application>
 
 </manifest>

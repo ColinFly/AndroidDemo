@@ -25,6 +25,7 @@ public class DataBindingMainActivity extends AppCompatActivity implements View.O
         UserBean bean=new UserBean();
         bean.setAge(21);
         bean.setName("张三斤");
+        bean.setPicUrl("https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=4138850978,2612460506&fm=200&gp=0.jpg");
         binding.setUser(bean);
 
         //List
