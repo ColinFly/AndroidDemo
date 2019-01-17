@@ -10,6 +10,7 @@ import com.colin.demo.data_binding.double_bind.DoubleBindActivity;
 import com.colin.demo.data_binding.recyclerview.RecyclerViewActivity;
 import com.colin.demo.mvp.view.BaseActivity;
 import com.colin.demo.mvp_demo.view.LoginActivity;
+import com.colin.demo.okhttp.OkHttpActivity;
 
 import butterknife.OnClick;
 
@@ -25,7 +26,7 @@ public class DemoMainActivity extends BaseActivity {
     }
 
 
-    @OnClick({R.id.btn_android_room_with_view, R.id.btn_mvp,R.id.btn_data_binding,
+    @OnClick({R.id.btn_okhttp,R.id.btn_android_room_with_view, R.id.btn_mvp,R.id.btn_data_binding,
             R.id.btn_data_bind_recycler_view,R.id.btn_double_bind})
     public void onClick(View view) {
         Intent intent = null;
@@ -48,6 +49,10 @@ public class DemoMainActivity extends BaseActivity {
                 break;
             case R.id.btn_double_bind:
                 intent = new Intent(this, DoubleBindActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btn_okhttp:
+                intent = new Intent(this, OkHttpActivity.class);
                 startActivity(intent);
                 break;
         }

@@ -7,7 +7,7 @@ android {
 
     defaultConfig {
         applicationId "com.colin.demo"
-        minSdkVersion 17
+        minSdkVersion 21
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
@@ -27,6 +27,17 @@ android {
 // use data binding, even if the app module doesn't directly use data binding.
     dataBinding {
         enabled = true
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+}
+
+repositories {
+    flatDir {
+        dirs 'libs'
     }
 
 }
@@ -61,10 +72,16 @@ dependencies {
     implementation "android.arch.lifecycle:extensions:$archLifecycleVersion"
     annotationProcessor "android.arch.lifecycle:compiler:$archLifecycleVersion"
 
-    implementation 'com.github.bumptech.glide:glide:4.6.1'
+    implementation 'com.github.bumptech.glide:glide:4.8.0'
+    //OkHttp
+    implementation 'com.squareup.okhttp3:okhttp:3.12.1'
+    implementation 'com.squareup.okio:okio:2.1.0'
 
 //    //kotlin_version
 //    def kotlin_version="1.0.7"
 //    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+//    implementation 'com.squareup.okhttp3:okhttp:3.0.0'
+    implementation(name: 'commonheader-release', ext: 'aar')
 
 }
