@@ -28,4 +28,6 @@ public class UserBean {
     public void setPicUrl(String picUrl) {
         this.picUrl = picUrl;
     }
+
+
 }

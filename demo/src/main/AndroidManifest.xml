@@ -36,6 +36,7 @@
         <activity android:name=".data_binding.DoubleBindActivity" />
         <activity android:name=".data_binding.double_bind.DoubleBindActivity" />
         <activity android:name=".okhttp.OkHttpActivity" />
+        <activity android:name=".recyclerview.RecyclerViewAty" />
     </application>
 
 </manifest>

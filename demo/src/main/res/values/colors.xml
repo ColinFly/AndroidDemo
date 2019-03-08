@@ -3,5 +3,8 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="buttonLabel">#d3d3d3</color>
+    <color name="white">#ffffff</color>
+    <color name="route_item_press">#6AFFA3</color>
+    <color name="route_item_view_press">#33ffa86a</color>
+    <color name="black">#000000</color>
 </resources>

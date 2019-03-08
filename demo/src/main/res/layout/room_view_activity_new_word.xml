@@ -23,6 +23,6 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
         android:text="@string/button_save"
-        android:textColor="@color/buttonLabel" />
+        android:textColor="@color/white" />
 
 </LinearLayout>
