@@ -1,4 +1,4 @@
 //include ':library', ':recyclerviewdemo', ':androidserver', ':sqlitedemo', ':greendao', ':gradle4android', ':rxjava', ':customview', ':photowall', ':demo',
 //        ':threaddemo', ':debugtool', ':kuaima', ':musicservice', ':musicclient', ':musiclib'
 
-include ':demo',':kuaima'
+include ':demo',':kuaima',':gradle4android'

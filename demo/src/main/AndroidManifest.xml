@@ -37,6 +37,11 @@
         <activity android:name=".data_binding.double_bind.DoubleBindActivity" />
         <activity android:name=".okhttp.OkHttpActivity" />
         <activity android:name=".recyclerview.RecyclerViewAty" />
+        <receiver android:name=".TestReceiver">
+            <intent-filter>
+                <action android:name="com.colin.receiver.test" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
