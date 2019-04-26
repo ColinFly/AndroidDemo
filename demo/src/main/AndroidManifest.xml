@@ -33,10 +33,11 @@
         <activity android:name=".android_room_with_view.NewWordActivity" />
         <activity android:name=".data_binding.DataBindingMainActivity" />
         <activity android:name=".data_binding.recyclerview.RecyclerViewActivity" />
-        <activity android:name=".data_binding.DoubleBindActivity" />
         <activity android:name=".data_binding.double_bind.DoubleBindActivity" />
         <activity android:name=".okhttp.OkHttpActivity" />
         <activity android:name=".recyclerview.RecyclerViewAty" />
+        <activity android:name=".constraint_layout.ConstraintAty" />
+
         <receiver android:name=".TestReceiver">
             <intent-filter>
                 <action android:name="com.colin.receiver.test" />

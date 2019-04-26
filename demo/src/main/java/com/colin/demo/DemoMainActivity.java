@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.colin.demo.android_room_with_view.WordMainActivity;
+import com.colin.demo.constraint_layout.ConstraintAty;
 import com.colin.demo.data_binding.DataBindingMainActivity;
 import com.colin.demo.data_binding.double_bind.DoubleBindActivity;
 import com.colin.demo.data_binding.recyclerview.RecyclerViewActivity;
@@ -28,39 +29,36 @@ public class DemoMainActivity extends BaseActivity {
 
 
     @OnClick({R.id.btn_recycler_view,R.id.btn_okhttp,R.id.btn_android_room_with_view, R.id.btn_mvp,R.id.btn_data_binding,
-            R.id.btn_data_bind_recycler_view,R.id.btn_double_bind})
+            R.id.btn_data_bind_recycler_view,R.id.btn_double_bind,R.id.btn_constraint_view})
     public void onClick(View view) {
         Intent intent = null;
         switch (view.getId()) {
+            case R.id.btn_constraint_view:
+                intent = new Intent(this, ConstraintAty.class);
+                break;
             case R.id.btn_recycler_view:
                 intent=new Intent(this, RecyclerViewAty.class);
-                startActivity(intent);
                 break;
             case R.id.btn_android_room_with_view:
                 intent=new Intent(this, WordMainActivity.class);
-                startActivity(intent);
                 break;
             case R.id.btn_mvp:
                 intent = new Intent(this, LoginActivity.class);
-                startActivity(intent);
                 break;
             case R.id.btn_data_binding:
                 intent=new Intent(this, DataBindingMainActivity.class);
-                startActivity(intent);
                 break;
             case R.id.btn_data_bind_recycler_view:
                 intent = new Intent(this, RecyclerViewActivity.class);
-                startActivity(intent);
                 break;
             case R.id.btn_double_bind:
                 intent = new Intent(this, DoubleBindActivity.class);
-                startActivity(intent);
                 break;
             case R.id.btn_okhttp:
                 intent = new Intent(this, OkHttpActivity.class);
-                startActivity(intent);
                 break;
         }
+        startActivity(intent);
     }
 
 
