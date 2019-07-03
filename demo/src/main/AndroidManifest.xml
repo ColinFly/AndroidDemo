@@ -37,6 +37,7 @@
         <activity android:name=".okhttp.OkHttpActivity" />
         <activity android:name=".recyclerview.RecyclerViewAty" />
         <activity android:name=".constraint_layout.ConstraintAty" />
+        <activity android:name=".websocket.WebSocketAty" />
 
         <receiver android:name=".TestReceiver">
             <intent-filter>
