@@ -38,6 +38,7 @@
         <activity android:name=".recyclerview.RecyclerViewAty" />
         <activity android:name=".constraint_layout.ConstraintAty" />
         <activity android:name=".websocket.WebSocketAty" />
+        <activity android:name=".opengl.GLActivity" />
 
         <receiver android:name=".TestReceiver">
             <intent-filter>
