@@ -10,8 +10,8 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 import android.widget.Toast;
 
-public class GLActivity extends Activity {
-    private static final String TAG = "GLActivity";
+public class AirHockeyRenderActivity extends Activity {
+    private static final String TAG = "AirHockeyRenderActivity";
     private GLSurfaceView mGlSurfaceView;
     private boolean mIsRender;
     @Override
@@ -25,7 +25,7 @@ public class GLActivity extends Activity {
         if (isSupportES2) {
             // Request an OpenGL ES 2.0 compatible context.
             mGlSurfaceView.setEGLContextClientVersion(2);
-            mGlSurfaceView.setRenderer(new GLRender());
+            mGlSurfaceView.setRenderer(new AirHockeyRender());
             mIsRender = true;
         } else {
             Toast.makeText(this, "This device does not support OpenGL ES 2.0.",
