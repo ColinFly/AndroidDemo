@@ -40,15 +40,17 @@ public class AsyncTaskAty extends AppCompatActivity implements View.OnClickListe
         mCancelBtn.setOnClickListener(this);
     }
 
+    boolean pause;
     //基础使用方式
     AsynckTask1 asynckTask1 = new AsynckTask1();
 
     //优化后的使用方式
     //1.全功能调用
     //2.简短的调用
+    MyAsyncTask<String, Integer, Boolean> task1;
     private void loadData() {
         //泛型参数化
-        MyAsyncTask.<String, Integer, Boolean>newBuilder().setPreExecute(new IPreExecute() {
+        task1 = (MyAsyncTask<String, Integer, Boolean>) MyAsyncTask.<String, Integer, Boolean>newBuilder().setPreExecute(new IPreExecute() {
             @Override
             public void onPreExecute() {
                 mProgressTv.setText("开始下载");
@@ -72,7 +74,7 @@ public class AsyncTaskAty extends AppCompatActivity implements View.OnClickListe
         }).setViewActive(new IIsViewActive() {
             @Override
             public boolean isViewActive() {
-                return isViewActive();
+                return isViewActived();
             }
         }).setProgressUpdate(new IProgressUpdate<Integer>() {
             @Override
@@ -87,8 +89,10 @@ public class AsyncTaskAty extends AppCompatActivity implements View.OnClickListe
             }
         }).start("参数1");
 
+        Log.i(TAG, "loadData: "+task1.toString());
     }
 
+    private static final String TAG = "AsyncTaskAty";
 
     private void loadData2() {
          MyAsyncTask<Void, Void, Void> task2 = (MyAsyncTask<Void, Void, Void>) MyAsyncTask.<Void, Void, Void>newBuilder().setDoInBackground(new IDoInBackground<Void, Void, Void>() {
@@ -103,7 +107,7 @@ public class AsyncTaskAty extends AppCompatActivity implements View.OnClickListe
     /**
      * @return 判断当前Activity是否处于活跃状态
      */
-    public boolean isViewActive() {
+    public boolean isViewActived() {
         return !(isFinishing() || (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1 && isDestroyed()));
     }
     @Override
@@ -114,7 +118,8 @@ public class AsyncTaskAty extends AppCompatActivity implements View.OnClickListe
                 loadData();
                 break;
             case R.id.btn_cancel_task:
-                asynckTask1.cancel(true);
+//                asynckTask1.cancel(true);
+                task1.stop(true);
                 break;
         }
     }

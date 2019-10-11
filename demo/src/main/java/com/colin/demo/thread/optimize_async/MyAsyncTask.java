@@ -18,7 +18,6 @@ public class MyAsyncTask<Params, Progress, Result> extends AsyncTask<Params, Pro
         if (mPreExecute != null && (mViewActive == null || mViewActive.isViewActive())) {
             mPreExecute.onPreExecute();
         }
-
     }
 
     @Override
@@ -49,7 +48,7 @@ public class MyAsyncTask<Params, Progress, Result> extends AsyncTask<Params, Pro
 
     @Override
     public void showProgress(Progress... values) {
-        this.showProgress(values);
+        this.publishProgress(values);
     }
 
 
