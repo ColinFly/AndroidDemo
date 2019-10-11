@@ -16,6 +16,7 @@ import com.colin.demo.mvp_demo.view.LoginActivity;
 import com.colin.demo.okhttp.OkHttpActivity;
 import com.colin.demo.opengl.AirHockeyRenderActivity;
 import com.colin.demo.recyclerview.RecyclerViewAty;
+import com.colin.demo.thread.AsyncTaskAty;
 import com.colin.demo.videoview.VideoViewAty;
 import com.colin.demo.websocket.WebSocketAty;
 
@@ -33,7 +34,7 @@ public class DemoMainActivity extends BaseActivity {
     }
 
 
-    @OnClick({R.id.btn_open_camera2,R.id.btn_open_camera1,R.id.btn_uri, R.id.btn_video_view, R.id.btn_open_gl, R.id.btn_web_socket, R.id.btn_recycler_view, R.id.btn_okhttp, R.id.btn_android_room_with_view, R.id.btn_mvp, R.id.btn_data_binding,
+    @OnClick({R.id.btn_asynctask,R.id.btn_open_camera2,R.id.btn_open_camera1,R.id.btn_uri, R.id.btn_video_view, R.id.btn_open_gl, R.id.btn_web_socket, R.id.btn_recycler_view, R.id.btn_okhttp, R.id.btn_android_room_with_view, R.id.btn_mvp, R.id.btn_data_binding,
             R.id.btn_data_bind_recycler_view, R.id.btn_double_bind, R.id.btn_constraint_view})
     public void onClick(View view) {
         Intent intent = null;
@@ -84,8 +85,11 @@ public class DemoMainActivity extends BaseActivity {
             case R.id.btn_open_camera2:
 
                 break;
+            case R.id.btn_asynctask:
+                intent = new Intent(this, AsyncTaskAty.class);
+                break;
         }
-//        startActivity(intent);
+        startActivity(intent);
     }
 
     @Override

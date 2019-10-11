@@ -49,6 +49,8 @@
         <activity android:name=".opengl.AirHockeyRenderActivity" />
         <activity android:name=".videoview.VideoViewAty" />
         <activity android:name=".camera.CameraActivity" />
+        <activity android:name=".animation.AnimationAty" />
+        <activity android:name=".thread.AsyncTaskAty" />
 
         <receiver android:name=".TestReceiver">
             <intent-filter>
